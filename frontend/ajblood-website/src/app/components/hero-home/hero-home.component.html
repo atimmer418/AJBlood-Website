@@ -1,0 +1,49 @@
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-chip">
+      <span class="chip-text">Innovation in Care</span>
+    </div>
+
+    <h1 class="hero-headline">
+      Cardiologist.<br />
+      Intensivist.<br />
+      <span class="italic-teal">AI Innovator.</span>
+    </h1>
+
+    <p class="hero-tagline">
+      Transforming Cardiometabolic Care at the Bedside and Beyond.
+    </p>
+
+    <div class="hero-tags">
+      @for (tag of tags; track tag) {
+        <span class="role-tag">{{ tag }}</span>
+      }
+    </div>
+
+    <div class="hero-actions">
+      <a routerLink="/publications" class="btn-primary">
+        <span class="material-symbols-outlined" aria-hidden="true">description</span>
+        View Publications
+      </a>
+      <a routerLink="/contact" class="btn-ghost">
+        Request an Interview
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-photo-wrap">
+      <img src="assets/headshot.jpg" alt="Dr. Alexander J. Blood" class="hero-photo" />
+    </div>
+    <div class="hero-roles-card">
+      <p class="roles-label">Primary Roles</p>
+      @for (role of roles; track role) {
+        <div class="role-row">
+          <div class="role-dot"></div>
+          <span class="role-name">{{ role }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>

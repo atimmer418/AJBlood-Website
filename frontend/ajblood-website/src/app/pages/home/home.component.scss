@@ -1,0 +1,44 @@
+.insights-section {
+  background: #fff8f0;
+  padding: 72px 40px;
+}
+
+.insights-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.insights-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 32px;
+}
+
+.insights-title {
+  font-family: 'Noto Serif', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000f22;
+}
+
+.insights-more {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #000f22;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 300ms;
+
+  .material-symbols-outlined { font-size: 16px; }
+
+  &:hover { color: #006a61; }
+}
+
+.insights-grid {
+  display: flex;
+  gap: 16px;
+}

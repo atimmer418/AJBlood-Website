@@ -1,0 +1,38 @@
+<section class="pub-hero">
+  <div class="radial-glow"></div>
+  <div class="pub-hero-inner">
+    <div class="pub-hero-text">
+      <h1 class="pub-hero-title">Academic Publications</h1>
+      <p class="pub-hero-desc">
+        Exploring the intersection of human vitality and artificial intelligence.
+        A comprehensive repository of research, peer-reviewed articles, and clinical trials.
+      </p>
+    </div>
+    <span class="material-symbols-outlined pub-hero-icon" aria-hidden="true">menu_book</span>
+  </div>
+</section>
+
+<section class="pub-list-section">
+  <div class="pub-list-inner">
+    <div class="filters">
+      @for (f of filters; track f) {
+        <button
+          class="filter-chip"
+          [class.active]="activeFilter() === f"
+          (click)="setFilter(f)"
+        >{{ f }}</button>
+      }
+    </div>
+
+    @for (pub of filtered(); track pub.title) {
+      <app-publication-card
+        [tag]="pub.tag"
+        [year]="pub.year"
+        [title]="pub.title"
+        [authors]="pub.authors"
+        [journal]="pub.journal"
+        [doi]="pub.doi"
+      />
+    }
+  </div>
+</section>

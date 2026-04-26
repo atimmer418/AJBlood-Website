@@ -1,0 +1,92 @@
+.quote-section {
+  background: #000f22;
+  padding: 80px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.radial-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(0, 106, 97, 0.12), transparent 60%);
+  pointer-events: none;
+}
+
+.quote-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.quote-card {
+  background: rgba(255, 248, 240, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 248, 240, 0.08);
+}
+
+.quote-icon {
+  font-size: 40px;
+  color: #006a61;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.quote-text {
+  font-family: 'Noto Serif', serif;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #fff8f0;
+  margin-bottom: 24px;
+}
+
+.quote-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.author-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: #fff8f0;
+  font-size: 13px;
+}
+
+.author-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 248, 240, 0.5);
+}
+
+.right-headline {
+  font-family: 'Noto Serif', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff8f0;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.right-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: rgba(255, 248, 240, 0.75);
+  line-height: 1.7;
+}

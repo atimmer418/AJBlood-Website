@@ -1,0 +1,27 @@
+<app-hero-home />
+<app-journal-logos />
+<app-stats-bar />
+
+<section class="insights-section">
+  <div class="insights-inner">
+    <div class="insights-header">
+      <h2 class="insights-title">Latest Insights</h2>
+      <a routerLink="/insights" class="insights-more">
+        View Archive
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+      </a>
+    </div>
+    <div class="insights-grid">
+      @for (card of insights; track card.title) {
+        <app-insight-card
+          [tag]="card.tag"
+          [title]="card.title"
+          [date]="card.date"
+          [dark]="card.dark"
+        />
+      }
+    </div>
+  </div>
+</section>
+
+<app-cta-section />

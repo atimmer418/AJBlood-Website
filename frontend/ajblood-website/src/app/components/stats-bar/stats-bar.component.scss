@@ -1,0 +1,35 @@
+.stats-bar {
+  background: #fff8f0;
+  padding: 32px 40px;
+  border-top: 1px solid rgba(196, 198, 206, 0.15);
+  border-bottom: 1px solid rgba(196, 198, 206, 0.15);
+}
+
+.stats-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000f22;
+}
+
+.stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #74777e;
+  margin-top: 4px;
+}

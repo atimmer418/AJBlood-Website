@@ -1,0 +1,144 @@
+<!-- Hero -->
+<section class="podcast-hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="live-chip">
+        <span class="material-symbols-outlined chip-icon" aria-hidden="true">graphic_eq</span>
+        <span class="chip-label">Latest Episode Live</span>
+      </div>
+      <h1 class="hero-title">CardioAI <span class="title-teal">Conversations</span></h1>
+      <p class="hero-desc">Where Cardiology, AI, and Clinical Transformation Meet.</p>
+      <div class="hero-actions">
+        <button class="btn-listen">
+          <span class="material-symbols-outlined" aria-hidden="true">play_circle</span>Listen Now
+        </button>
+        <button class="btn-subscribe">
+          <span class="material-symbols-outlined" aria-hidden="true">notifications</span>Subscribe
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-image-wrap">
+      <div class="image-card">
+        <img src="assets/corridor.jpg" alt="Podcast studio" class="studio-img" />
+        <div class="image-overlay"></div>
+        <div class="hosted-strip">
+          <div class="host-icon">
+            <span class="material-symbols-outlined" aria-hidden="true">podcasts</span>
+          </div>
+          <span class="hosted-label">Hosted by Dr. Blood</span>
+        </div>
+      </div>
+      <div class="image-border-frame"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TODO: replace with a real featured episode (title, guests, thumbnail) when Dr. Blood sends the data -->
+<!-- Featured Performance -->
+<section class="featured-perf">
+  <div class="waveform-bg" aria-hidden="true">
+    <svg viewBox="0 0 400 400" preserveAspectRatio="none">
+      <path d="M0,200 Q100,50 200,200 T400,200" fill="none" stroke="#60f6e5" stroke-width="2"/>
+      <path d="M0,220 Q100,70 200,220 T400,220" fill="none" stroke="#60f6e5" stroke-width="1" opacity="0.5"/>
+    </svg>
+  </div>
+  <div class="featured-inner">
+    <div class="featured-header">
+      <h2 class="featured-title">Featured Performance</h2>
+    </div>
+    <div class="featured-card">
+      <div class="featured-thumb">
+        <img src="assets/lobby.jpg" alt="Featured episode" class="thumb-img" />
+        <div class="thumb-overlay">
+          <button class="play-btn" aria-label="Play episode">
+            <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span>
+          </button>
+        </div>
+      </div>
+      <div class="featured-body">
+        <span class="ep-label">Season 2, Episode 14</span>
+        <h3 class="ep-title">The Future of Large Language Models in Acute Cardiac Care</h3>
+        <p class="ep-desc">
+          In this deep dive, Dr. Alexander J. Blood explores the ethical and operational
+          implications of real-time AI diagnostics in the ICU.
+        </p>
+        <div class="guests-row">
+          <div class="guest-avatars">
+            <div class="avatar"><span class="material-symbols-outlined" aria-hidden="true">person</span></div>
+            <div class="avatar avatar-offset"><span class="material-symbols-outlined" aria-hidden="true">person</span></div>
+          </div>
+          <span class="guests-names">Featuring Dr. Sarah Chen &amp; Alex Rivera</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Episode Grid -->
+<section class="episodes-section">
+  <div class="episodes-inner">
+    <div class="episodes-header">
+      <h2 class="episodes-title">Featured Conversations Elsewhere</h2>
+      <div class="title-underline"></div>
+    </div>
+    <!-- TODO: replace 6 stubs with real podcast/conversation appearances when Dr. Blood sends the list -->
+    <div class="episodes-grid">
+      @for (ep of episodes; track ep.title) {
+        <div class="ep-card">
+          <div class="ep-thumbnail">
+            <span class="material-symbols-outlined thumb-icon" aria-hidden="true">{{ ep.icon }}</span>
+            <div class="thumb-footer">
+              <span class="duration-badge">{{ ep.duration }}</span>
+              <button class="thumb-play" [attr.aria-label]="'Play ' + ep.title">
+                <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span>
+              </button>
+            </div>
+          </div>
+          <h4 class="ep-card-title">{{ ep.title }}</h4>
+          <p class="ep-card-desc">{{ ep.desc }}</p>
+          <div class="ep-guest">
+            <div class="guest-avatar-sm">
+              <span class="material-symbols-outlined" aria-hidden="true">person</span>
+            </div>
+            <span class="guest-name">Guest: {{ ep.guest }}</span>
+          </div>
+          <div class="ep-card-footer">
+            <button class="icon-action" aria-label="Share">
+              <span class="material-symbols-outlined" aria-hidden="true">brand_awareness</span>
+            </button>
+            <button class="icon-action" aria-label="Transcript">
+              <span class="material-symbols-outlined" aria-hidden="true">settings_voice</span>
+            </button>
+            <button class="listen-link">
+              Listen Now <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="linkedin-callout">
+      <p class="callout-lead">For the full archive of conversations, lectures, and panels:</p>
+      <a href="https://www.linkedin.com/in/alexander-blood-md-msc-facc-abom-a8654a23"
+         target="_blank" rel="noopener" class="linkedin-link">
+        See more on LinkedIn
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="podcast-cta-outer">
+  <div class="podcast-cta-card">
+    <img src="assets/exterior.jpg" alt="" role="presentation" class="cta-bg" />
+    <div class="cta-inner">
+      <h2 class="cta-title">Have a Vision for the Future of Cardiology?</h2>
+      <p class="cta-desc">
+        We are always looking for innovators, clinicians, and tech pioneers to share
+        their journey on CardioAI Conversations.
+      </p>
+      <button class="cta-btn">Apply to Be a Guest</button>
+    </div>
+  </div>
+</section>

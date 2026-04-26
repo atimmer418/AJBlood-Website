@@ -1,0 +1,73 @@
+<section class="about-hero">
+  <div class="about-hero-left">
+    <div class="chip">
+      <span class="chip-text">Clinical Innovator &amp; Researcher</span>
+    </div>
+    <h1 class="about-headline">
+      At the Intersection of <span class="italic-teal">Medicine</span> &amp;
+      <span class="teal">Machine Intelligence</span>.
+    </h1>
+    <p class="about-tagline">
+      Dr. Alexander J. Blood is a cardiologist and clinical investigator dedicated
+      to reimagining healthcare through the lens of artificial intelligence.
+    </p>
+    <div class="about-actions">
+      <button class="btn-dark">
+        <span class="material-symbols-outlined" aria-hidden="true">download</span>
+        Download Full CV
+      </button>
+      <button class="btn-ghost">
+        Explore Career Journey
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="about-hero-right">
+    <div class="about-photo-wrap">
+      <img src="assets/lobby.jpg" alt="Dr. Alexander J. Blood at Brigham & Women's Hospital" class="about-photo" />
+    </div>
+    <div class="about-roles-card">
+      <p class="roles-label">Primary Roles</p>
+      @for (role of roles; track role) {
+        <div class="role-row">
+          <div class="role-dot"></div>
+          <span class="role-name">{{ role }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="affiliations-section">
+  <div class="affiliations-inner">
+    <h2 class="affiliations-title">Affiliations &amp; Leadership</h2>
+    <div class="affiliations-grid">
+      @for (aff of affiliations; track aff.label) {
+        <div class="affiliation-item">
+          <span class="aff-logo {{ aff.mark }}" aria-hidden="true">{{ aff.short }}</span>
+          <span class="aff-label">{{ aff.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="timeline-section">
+  <div class="timeline-inner">
+    <h2 class="timeline-title">Professional Narrative</h2>
+    <div class="timeline">
+      <div class="timeline-line"></div>
+      @for (item of timeline; track item.title) {
+        <div class="timeline-item">
+          <div class="timeline-dot" [class.active]="item.active"></div>
+          <span class="timeline-date">{{ item.date }}</span>
+          <h3 class="timeline-role">{{ item.title }}</h3>
+          <p class="timeline-desc">{{ item.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<app-quote-section />

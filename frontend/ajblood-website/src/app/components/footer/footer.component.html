@@ -1,0 +1,33 @@
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-name">Dr. Alexander J. Blood</div>
+      <p class="brand-desc">
+        Cardiologist, Researcher, &amp; Clinical AI Architect.
+        Advancing the future of medicine through thoughtful digital integration.
+      </p>
+    </div>
+
+    @for (col of cols; track col.head) {
+      <div class="footer-col">
+        <div class="col-head">{{ col.head }}</div>
+        @for (link of col.links; track link.label) {
+          @if (link.route) {
+            <a [routerLink]="link.route" class="col-link">{{ link.label }}</a>
+          } @else {
+            <a [href]="link.href ?? '#'" class="col-link" rel="noopener">{{ link.label }}</a>
+          }
+        }
+      </div>
+    }
+  </div>
+
+  <div class="footer-bottom">
+    <p class="copyright">© 2024 Dr. Alexander J. Blood. All rights reserved.</p>
+    <div class="pulse-dots">
+      @for (opacity of pulseOpacities; track $index) {
+        <div class="pulse-dot" [style.opacity]="opacity"></div>
+      }
+    </div>
+  </div>
+</footer>

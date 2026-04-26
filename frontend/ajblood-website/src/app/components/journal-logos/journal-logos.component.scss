@@ -1,0 +1,102 @@
+.journal-logos {
+  background: #faf3e7;
+  padding: 28px 40px;
+}
+
+.logos-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.logos-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #74777e;
+  margin-bottom: 16px;
+}
+
+.logos-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.55;
+}
+
+.logo-mark {
+  font-family: 'Noto Serif', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #000f22;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* Per-journal typographic identity */
+.logo-jama {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.logo-nejm-ai {
+  font-family: 'Noto Serif', serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-style: italic;
+}
+
+.logo-nejm-catalyst {
+  font-family: 'Noto Serif', serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-style: italic;
+}
+
+.logo-jama-card {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.logo-circulation {
+  font-family: 'Noto Serif', serif;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.logo-aci {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.logo-bmj-open {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.logo-jacc-adv {
+  font-family: 'Noto Serif', serif;
+  font-size: 16px;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.01em;
+}

@@ -1,0 +1,130 @@
+.contact-page {
+  background: #fff8f0;
+  min-height: 100vh;
+  padding-top: 100px;
+}
+
+.contact-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+.pre-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #006a61;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.contact-title {
+  font-family: 'Noto Serif', serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: #000f22;
+  margin-bottom: 14px;
+  line-height: 1.1;
+}
+
+.contact-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: #43474d;
+  line-height: 1.65;
+  margin-bottom: 40px;
+}
+
+/* ── Success ── */
+.success-panel {
+  background: rgba(96, 246, 229, 0.15);
+  border: 1px solid rgba(0, 106, 97, 0.2);
+  border-radius: 8px;
+  padding: 28px;
+  text-align: center;
+}
+
+.success-icon {
+  font-size: 40px;
+  color: #006a61;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.success-heading {
+  font-family: 'Noto Serif', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #000f22;
+}
+
+.success-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #43474d;
+  margin-top: 8px;
+}
+
+/* ── Form ── */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #000f22;
+  display: block;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.field-input,
+.field-textarea {
+  width: 100%;
+  padding: 12px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(196, 198, 206, 0.6);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #000f22;
+  outline: none;
+  transition: border-color 300ms;
+
+  &:focus {
+    border-bottom-color: #006a61;
+  }
+}
+
+.field-textarea {
+  resize: none;
+}
+
+.submit-btn {
+  padding: 14px 28px;
+  background: #006a61;
+  color: #fff;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: transform 300ms;
+
+  &:hover { transform: scale(1.04); }
+}

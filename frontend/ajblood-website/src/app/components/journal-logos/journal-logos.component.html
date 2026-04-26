@@ -1,0 +1,10 @@
+<section class="journal-logos">
+  <div class="logos-inner">
+    <p class="logos-label">Featured Research &amp; Contributions</p>
+    <div class="logos-row">
+      @for (j of journals; track j.slug) {
+        <span class="logo-mark logo-{{ j.slug }}">{{ j.name }}</span>
+      }
+    </div>
+  </div>
+</section>

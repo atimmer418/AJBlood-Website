@@ -1,0 +1,51 @@
+.insight-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(10, 37, 64, 0.05);
+  flex: 1;
+  min-width: 200px;
+  transition: transform 300ms, background 300ms;
+
+  &:hover {
+    transform: scale(1.02);
+    background: #ffffff;
+  }
+
+  &.dark {
+    background: #000f22;
+
+    .title { color: #fff8f0; }
+    .date  { color: rgba(255, 248, 240, 0.5); }
+    .tag   { background: rgba(0, 106, 97, 0.2); }
+  }
+}
+
+.tag {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  background: rgba(96, 246, 229, 0.18);
+  color: #006a61;
+}
+
+.title {
+  font-family: 'Noto Serif', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000f22;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.date {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: #74777e;
+}

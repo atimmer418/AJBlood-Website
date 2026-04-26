@@ -1,0 +1,32 @@
+<section class="expertise-hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="chip-label">Specializations</div>
+      <h1 class="hero-headline">
+        Where Clinical Excellence<br>
+        <span class="italic-teal">Meets Intelligent Evolution</span>.
+      </h1>
+      <p class="hero-desc">
+        Bridging the gap between high-acuity cardiovascular care and the next generation
+        of healthcare technology through rigorous research and human-centric AI implementation.
+      </p>
+    </div>
+    <span class="material-symbols-outlined hero-icon" aria-hidden="true">biotech</span>
+  </div>
+</section>
+
+<section class="cards-section">
+  <div class="cards-grid">
+    @for (card of cards; track card.title) {
+      <app-expertise-card
+        [icon]="card.icon"
+        [title]="card.title"
+        [desc]="card.desc"
+        [tags]="card.tags"
+        [dark]="card.dark"
+      />
+    }
+  </div>
+</section>
+
+<app-cta-section />

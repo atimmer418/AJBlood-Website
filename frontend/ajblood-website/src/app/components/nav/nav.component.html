@@ -1,0 +1,19 @@
+<nav aria-label="Primary">
+  <a routerLink="/" class="nav-logo">Dr. Alexander J. Blood</a>
+
+  <div class="nav-links">
+    @for (link of navLinks; track link.path) {
+      <a
+        [routerLink]="link.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+        class="nav-link"
+      >{{ link.label }}</a>
+    }
+  </div>
+
+  <div class="nav-actions">
+    <span class="material-symbols-outlined nav-search" aria-hidden="true">search</span>
+    <a routerLink="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
