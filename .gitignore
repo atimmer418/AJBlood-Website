@@ -1,0 +1,35 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+.pnp
+.pnp.js
+
+# Angular
+frontend/ajblood-website/dist/
+frontend/ajblood-website/tmp/
+frontend/ajblood-website/out-tsc/
+frontend/ajblood-website/.angular/cache/
+frontend/ajblood-website/coverage/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# IDEs
+.idea/
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+
+# Claude Code local settings (keep shared settings.json, ignore local overrides)
+.claude/settings.local.json
+
+# OS
+.DS_Store
+Thumbs.db
