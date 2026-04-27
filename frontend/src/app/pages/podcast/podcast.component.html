@@ -20,16 +20,17 @@
 
     <div class="hero-image-wrap">
       <div class="image-card">
-        <img src="assets/corridor.jpg" alt="Podcast studio" class="studio-img" />
+        <img ngSrc="corridor" width="1600" height="1067" priority
+             alt="Podcast studio" class="studio-img" />
         <div class="image-overlay"></div>
         <div class="hosted-strip">
           <div class="host-icon">
             <span class="material-symbols-outlined" aria-hidden="true">podcasts</span>
           </div>
-          <span class="hosted-label">Hosted by Dr. Blood</span>
+          <span class="hosted-label">Hosted by Dr. Blood & Dr. Ben Peterson</span>
         </div>
       </div>
-      <div class="image-border-frame"></div>
+      <div class="image-border-frame hide-mobile" aria-hidden="true"></div>
     </div>
   </div>
 </section>
@@ -49,7 +50,8 @@
     </div>
     <div class="featured-card">
       <div class="featured-thumb">
-        <img src="assets/lobby.jpg" alt="Featured episode" class="thumb-img" />
+        <img ngSrc="lobby" width="1600" height="2436"
+             alt="Featured episode" class="thumb-img" />
         <div class="thumb-overlay">
           <button class="play-btn" aria-label="Play episode">
             <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span>
@@ -131,7 +133,8 @@
 <!-- CTA -->
 <section class="podcast-cta-outer">
   <div class="podcast-cta-card">
-    <img src="assets/exterior.jpg" alt="" role="presentation" class="cta-bg" />
+    <img ngSrc="exterior" width="1600" height="1067"
+         alt="" role="presentation" class="cta-bg" />
     <div class="cta-inner">
       <h2 class="cta-title">Have a Vision for the Future of Cardiology?</h2>
       <p class="cta-desc">

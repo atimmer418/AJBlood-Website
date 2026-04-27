@@ -617,3 +617,107 @@
 
   &:hover { transform: scale(1.04); }
 }
+
+@media (max-width: 768px) {
+  /* ── Hero ── */
+  .podcast-hero {
+    padding: var(--hero-pt) var(--page-px) 40px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    max-width: unset;
+  }
+
+  /* Image card: full-width 16:9, border frame hidden via .hide-mobile */
+  .hero-image-wrap {
+    width: 100%;
+  }
+
+  .image-card {
+    aspect-ratio: 16/9;
+    border-radius: 16px;
+  }
+
+  .hosted-strip {
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+  }
+
+  .hosted-label {
+    font-size: 15px;
+  }
+
+  /* ── Featured Performance ── */
+  .featured-perf {
+    padding: var(--section-py) var(--page-px);
+  }
+
+  /* Side-by-side grid → stacked */
+  .featured-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .featured-thumb {
+    min-height: unset;
+    aspect-ratio: 16/9;
+  }
+
+  .featured-body {
+    padding: 20px 16px;
+  }
+
+  .ep-title {
+    font-size: 18px;
+  }
+
+  /* ── Episode Grid ── */
+  .episodes-section {
+    padding: var(--section-py) var(--page-px);
+  }
+
+  .episodes-title {
+    font-size: 22px;
+  }
+
+  .episodes-grid {
+    grid-template-columns: 1fr;
+    gap: var(--card-gap);
+  }
+
+  /* ── LinkedIn callout ── */
+  .linkedin-callout {
+    margin-top: 32px;
+  }
+
+  /* ── Guest CTA Card ── */
+  .podcast-cta-outer {
+    padding: 0 var(--page-px) 48px;
+  }
+
+  .podcast-cta-card {
+    border-radius: 16px;
+    padding: 28px 16px;
+  }
+
+  .cta-title {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+
+  .cta-desc {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+}
