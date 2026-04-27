@@ -88,3 +88,24 @@ footer {
   border-radius: 50%;
   background: #006a61;
 }
+
+@media (max-width: 768px) {
+  footer {
+    padding: 40px var(--page-px) 28px;
+  }
+
+  .footer-inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
