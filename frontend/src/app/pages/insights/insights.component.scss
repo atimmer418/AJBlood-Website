@@ -170,3 +170,42 @@
 
   &:hover { transform: scale(1.04); }
 }
+
+@media (max-width: 768px) {
+  /* Hero: full-width text, glass panel hidden via .hide-mobile */
+  .insights-hero {
+    padding: var(--hero-pt) var(--page-px) 40px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 7vw, 3rem);
+  }
+
+  /* Featured section */
+  .featured-section {
+    padding: var(--section-py) var(--page-px);
+  }
+
+  /* Featured card: side-by-side → stacked */
+  .featured-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .featured-thumb {
+    min-height: 180px;
+  }
+
+  .featured-body {
+    padding: 20px 16px;
+  }
+
+  .featured-article-title {
+    font-size: 18px;
+  }
+}
