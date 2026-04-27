@@ -42,3 +42,18 @@
   display: flex;
   gap: 16px;
 }
+
+@media (max-width: 768px) {
+  .insights-section {
+    padding: var(--section-py) var(--page-px);
+  }
+
+  .insights-grid {
+    flex-direction: column;
+    gap: var(--card-gap);
+  }
+
+  .insights-header {
+    margin-bottom: 20px;
+  }
+}

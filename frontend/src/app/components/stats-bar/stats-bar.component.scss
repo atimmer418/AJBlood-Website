@@ -33,3 +33,17 @@
   color: #74777e;
   margin-top: 4px;
 }
+
+@media (max-width: 768px) {
+  .stats-bar {
+    padding: 14px var(--page-px);
+  }
+
+  .stat-num {
+    font-size: 18px;
+  }
+
+  .stat-label {
+    font-size: 7px;
+  }
+}
