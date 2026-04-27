@@ -12,20 +12,21 @@
       to reimagining healthcare through the lens of artificial intelligence.
     </p>
     <div class="about-actions">
-      <button class="btn-dark">
+      <a href="assets/Dr_AJ_Blood_CV.pdf" download="Dr. AJ Blood CV.pdf" class="btn-dark">
         <span class="material-symbols-outlined" aria-hidden="true">download</span>
         Download Full CV
-      </button>
-      <button class="btn-ghost">
+      </a>
+      <a href="#professional-narrative" (click)="$event.preventDefault(); scrollToNarrative()" class="btn-ghost">
         Explore Career Journey
         <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-      </button>
+      </a>
     </div>
   </div>
 
   <div class="about-hero-right">
     <div class="about-photo-wrap">
-      <img src="assets/lobby.jpg" alt="Dr. Alexander J. Blood at Brigham & Women's Hospital" class="about-photo" />
+      <img ngSrc="lobby" width="1600" height="2436" priority
+           alt="Dr. Alexander J. Blood at Brigham & Women's Hospital" class="about-photo" />
     </div>
     <div class="about-roles-card">
       <p class="roles-label">Primary Roles</p>
@@ -44,16 +45,18 @@
     <h2 class="affiliations-title">Affiliations &amp; Leadership</h2>
     <div class="affiliations-grid">
       @for (aff of affiliations; track aff.label) {
-        <div class="affiliation-item">
-          <span class="aff-logo {{ aff.mark }}" aria-hidden="true">{{ aff.short }}</span>
+        <a class="affiliation-item" [href]="aff.href" target="_blank" rel="noopener noreferrer">
+          <div class="aff-logo-wrap">
+            <img [src]="aff.logo" [alt]="aff.alt" class="aff-logo-img {{ aff.size }}" loading="lazy" />
+          </div>
           <span class="aff-label">{{ aff.label }}</span>
-        </div>
+        </a>
       }
     </div>
   </div>
 </section>
 
-<section class="timeline-section">
+<section id="professional-narrative" class="timeline-section">
   <div class="timeline-inner">
     <h2 class="timeline-title">Professional Narrative</h2>
     <div class="timeline">
