@@ -1,21 +1,29 @@
 import { Component } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { QuoteSectionComponent } from '../../components/quote-section/quote-section.component';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [QuoteSectionComponent],
+  imports: [NgOptimizedImage, QuoteSectionComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })
 export class AboutComponent {
-  readonly roles = ['Harvard Medical School', "Brigham & Women's Hospital", 'AIwithCare CEO'];
+  scrollToNarrative(): void {
+    const el = document.getElementById('professional-narrative');
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 64;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+
+  readonly roles = ['Harvard Medical School', "Brigham & Women's Hospital", 'AIwithCare Co-Founder and CEO'];
 
   readonly affiliations = [
-    { mark: 'aff-hms',  label: 'Harvard Medical School',                                              short: 'HMS' },
-    { mark: 'aff-bwh',  label: "Brigham and Women's Hospital",                                        short: 'BWH' },
-    { mark: 'aff-aiwc', label: 'AIwithCare',                                                          short: 'AIwithCare' },
-    { mark: 'aff-aha',  label: 'American Heart Association — Health Technology Advisory Group',        short: 'AHA' },
+    { logo: 'assets/logos/hms.svg',        alt: 'Harvard Medical School',       label: 'Harvard Medical School',                                              size: 'logo-hms',  href: 'https://hms.harvard.edu/' },
+    { logo: 'assets/logos/bwh.svg',        alt: "Brigham and Women's Hospital", label: "Brigham and Women's Hospital",                                        size: 'logo-bwh',  href: 'https://www.brighamandwomens.org/' },
+    { logo: 'assets/logos/aiwithcare.png', alt: 'AIwithCare',                   label: 'AIwithCare',                                                          size: 'logo-aiwc', href: 'https://aiwithcare.com/' },
+    { logo: 'assets/logos/aha.svg',        alt: 'American Heart Association',   label: 'American Heart Association — Health Technology Advisory Group',       size: 'logo-aha',  href: 'https://www.heart.org/' },
   ];
 
   readonly timeline = [
