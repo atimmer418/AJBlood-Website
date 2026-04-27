@@ -193,3 +193,38 @@ img {
   height: 1px;
   opacity: 0.3;
 }
+
+/* ─── RESPONSIVE TOKENS ─────────────────────────────────────────────────── */
+:root {
+  --page-px:    40px;
+  --section-py: 72px;
+  --hero-pt:    100px;
+  --nav-height: 64px;
+  --card-gap:   16px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --page-px:    24px;
+    --section-py: 56px;
+    --hero-pt:    72px;
+    --nav-height: 52px;
+    --card-gap:   12px;
+  }
+
+  .hide-mobile {
+    display: none !important;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --page-px:    16px;
+    --section-py: 48px;
+    --hero-pt:    50px;
+  }
+}
