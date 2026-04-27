@@ -128,3 +128,20 @@
 
   &:hover { transform: scale(1.04); }
 }
+
+@media (max-width: 768px) {
+  .contact-inner {
+    padding: 40px var(--page-px);
+  }
+
+  .contact-title {
+    font-size: 32px;
+  }
+
+  .submit-btn {
+    align-self: stretch;
+    width: 100%;
+    text-align: center;
+    touch-action: manipulation;
+  }
+}
