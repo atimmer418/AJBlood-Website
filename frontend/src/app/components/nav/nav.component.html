@@ -1,4 +1,4 @@
-<nav aria-label="Primary">
+<nav aria-label="Primary" [class.dark-nav]="isDarkNav()">
   <a routerLink="/" class="nav-logo">Dr. Alexander J. Blood</a>
 
   <div class="nav-links">
@@ -16,4 +16,52 @@
     <span class="material-symbols-outlined nav-search" aria-hidden="true">search</span>
     <a routerLink="/contact" class="nav-cta">Contact</a>
   </div>
+
+  <!-- Mobile only: hamburger button -->
+  <button
+    class="nav-hamburger"
+    [attr.aria-expanded]="menuOpen()"
+    aria-label="Navigation menu"
+    aria-controls="mobile-drawer"
+    (click)="toggleMenu()"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<!-- Mobile drawer + scrim (rendered outside <nav> to escape stacking context) -->
+@if (menuOpen()) {
+  <div class="nav-scrim" (click)="closeMenu()" aria-hidden="true"></div>
+  <div
+    id="mobile-drawer"
+    class="nav-drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Site navigation"
+  >
+    <button class="drawer-close" (click)="closeMenu()" aria-label="Close navigation">
+      <span class="material-symbols-outlined" aria-hidden="true">close</span>
+    </button>
+
+    <div class="drawer-links">
+      @for (link of navLinks; track link.path) {
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="drawer-link-active"
+          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+          class="drawer-link"
+          (click)="closeMenu()"
+        >
+          <span class="drawer-dot" aria-hidden="true"></span>
+          {{ link.label }}
+        </a>
+      }
+    </div>
+
+    <a routerLink="/contact" class="drawer-cta" (click)="closeMenu()">
+      Contact Dr. Blood
+    </a>
+  </div>
+}
