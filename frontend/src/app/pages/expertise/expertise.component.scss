@@ -71,3 +71,27 @@
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
+
+@media (max-width: 768px) {
+  .expertise-hero {
+    padding: var(--hero-pt) var(--page-px) 32px;
+  }
+
+  .hero-inner {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+
+  .cards-section {
+    padding: 24px var(--page-px);
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: var(--card-gap);
+  }
+}

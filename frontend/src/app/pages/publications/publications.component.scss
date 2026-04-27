@@ -94,3 +94,41 @@
     background: rgba(96, 246, 229, 0.3);
   }
 }
+
+@media (max-width: 768px) {
+  .pub-hero {
+    padding: var(--hero-pt) var(--page-px) 40px;
+  }
+
+  .pub-hero-inner {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .pub-hero-title {
+    font-size: clamp(1.75rem, 7vw, 3rem);
+  }
+
+  .pub-list-section {
+    padding: 32px var(--page-px);
+  }
+
+  /* Filter chips: horizontal scroll instead of wrapping */
+  .filters {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+    margin-bottom: 24px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .filter-chip {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
