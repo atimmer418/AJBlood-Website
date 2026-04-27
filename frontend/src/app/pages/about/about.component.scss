@@ -173,7 +173,6 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
-  opacity: 0.65;
 }
 
 .affiliation-item {
@@ -182,50 +181,27 @@
   align-items: center;
   gap: 12px;
   text-align: center;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.aff-logo {
-  font-family: 'Inter', sans-serif;
-  font-size: 20px;
-  font-weight: 900;
-  color: #000f22;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  line-height: 1;
+.aff-logo-wrap {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.aff-hms {
-  font-family: 'Noto Serif', serif;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #8c1515;
+.aff-logo-img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
 }
 
-.aff-bwh {
-  font-family: 'Inter', sans-serif;
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  color: #003366;
-}
-
-.aff-aiwc {
-  font-family: 'Noto Serif', serif;
-  font-size: 16px;
-  font-weight: 700;
-  font-style: italic;
-  letter-spacing: 0.04em;
-  color: #006a61;
-}
-
-.aff-aha {
-  font-family: 'Inter', sans-serif;
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  color: #c41230;
-}
+.logo-hms  { max-height: 60px; }
+.logo-bwh  { max-height: 44px; }
+.logo-aiwc { max-height: 40px; }
+.logo-aha  { max-height: 52px; }
 
 .aff-label {
   font-family: 'Noto Serif', serif;
@@ -312,4 +288,71 @@
   font-size: 14px;
   color: #43474d;
   line-height: 1.65;
+}
+
+/* ─── AFFILIATION LOGO IMAGES ─────────────────────────────────────────────── */
+.aff-logo-img {
+  max-height: 36px;
+  max-width: 100%;
+  object-fit: contain;
+  opacity: 0.65;
+}
+
+/* ─── MOBILE ──────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Hero: single-column stack */
+  .about-hero {
+    grid-template-columns: 1fr;
+    padding: var(--hero-pt) var(--page-px) 40px;
+    gap: 24px;
+  }
+
+  .about-headline {
+    font-size: clamp(1.75rem, 7vw, 3rem);
+  }
+
+  .about-tagline {
+    font-size: 15px;
+    max-width: unset;
+  }
+
+  /* Photo proportions */
+  .about-photo-wrap {
+    aspect-ratio: 4/3;
+  }
+
+  /* Roles card: remove absolute positioning, flow below photo */
+  .about-roles-card {
+    position: static;
+    width: 100%;
+    margin-top: 12px;
+    border-radius: 8px;
+    left: unset;
+    bottom: unset;
+  }
+
+  /* Affiliations: 4-col → 2-col */
+  .affiliations-section {
+    padding: var(--section-py) var(--page-px);
+  }
+
+  .affiliations-title {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+
+  .affiliations-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* Timeline */
+  .timeline-section {
+    padding: var(--section-py) var(--page-px);
+  }
+
+  .timeline-title {
+    font-size: 26px;
+    margin-bottom: 36px;
+  }
 }
