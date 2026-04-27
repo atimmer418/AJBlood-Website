@@ -19,9 +19,9 @@ export class FooterComponent {
     {
       head: 'Affiliations',
       links: [
-        { label: 'Harvard Medical School' },
-        { label: "Brigham and Women's Hospital" },
-        { label: 'AIwithCare' }
+        { label: 'Harvard Medical School',      href: 'https://hms.harvard.edu/' },
+        { label: "Brigham and Women's Hospital", href: 'https://www.brighamandwomens.org/' },
+        { label: 'AIwithCare',                   href: 'https://aiwithcare.com/' }
       ]
     },
     {
@@ -30,15 +30,16 @@ export class FooterComponent {
         { label: 'Home',         route: '/' },
         { label: 'About',        route: '/about' },
         { label: 'Expertise',    route: '/expertise' },
-        { label: 'Publications', route: '/publications' },
-        { label: 'Podcast',      route: '/podcast' }
+        { label: 'Publications',    route: '/publications' },
+        { label: 'Insights & Media', route: '/insights' },
+        { label: 'Podcast',         route: '/podcast' }
       ]
     },
     {
       head: 'Connect',
       links: [
-        { label: 'LinkedIn',       href: '#' },
-        { label: 'X (Twitter)',    href: '#' },
+        { label: 'LinkedIn',       href: 'https://www.linkedin.com/in/alexander-blood-md-msc-facc-abom-a8654a23' },
+        { label: 'X (Twitter)',    href: 'https://x.com/ajbloodmd' },
         { label: 'Privacy Policy', href: '#' }
       ]
     }

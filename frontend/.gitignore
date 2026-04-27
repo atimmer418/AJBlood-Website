@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Original (pre-optimization) source images — run npm run optimize:images to regenerate optimized/
+/public/assets/_originals

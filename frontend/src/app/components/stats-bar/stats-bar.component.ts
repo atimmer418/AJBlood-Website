@@ -8,9 +8,9 @@ import { Component } from '@angular/core';
 })
 export class StatsBarComponent {
   readonly stats = [
-    { num: '50+', label: 'Peer-Reviewed Papers' },
-    { num: '15k', label: 'Citations Globally' },
+    { num: '25+', label: 'Peer-Reviewed Papers' },
+    { num: '880+', label: 'Citations Globally' },
     { num: '10',  label: 'Active AI Trials' },
-    { num: '12y', label: 'Clinical Experience' },
+    { num: '12yrs', label: 'Clinical Experience' },
   ];
 }

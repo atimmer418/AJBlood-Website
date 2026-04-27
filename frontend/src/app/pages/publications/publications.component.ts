@@ -102,6 +102,14 @@ export class PublicationsComponent {
       journal: 'Hypertension, Vol 82, Issue 4',
       doi: 'DOI: 10.1161/HYPERTENSIONAHA.124.23947',
     },
+    {
+      tag: 'Cardiometabolic',
+      year: 2025,
+      title: 'Digital Approaches to Obesity: Future Directions',
+      authors: 'Falahee B, Ostrominski J, Blood A',
+      journal: 'Canadian Journal of Cardiology, Vol 41, 1832–1835',
+      doi: 'DOI: 10.1016/j.cjca.2025.03.011',
+    },
   ];
 
   readonly filtered = computed(() => {

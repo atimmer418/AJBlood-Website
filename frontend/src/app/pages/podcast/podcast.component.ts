@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-podcast',
   standalone: true,
-  imports: [RouterLink],
+  imports: [NgOptimizedImage],
   templateUrl: './podcast.component.html',
   styleUrl: './podcast.component.scss'
 })

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design Section 3 — Podcast & Insights</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: #111827; color: #f9fafb; padding: 32px 24px 80px; }
+
+  h1 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #60f6e5; margin-bottom: 4px; }
+  h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .section-sub { font-size: 13px; color: #9ca3af; margin-bottom: 40px; line-height: 1.6; }
+  h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9ca3af; margin-bottom: 20px; }
+
+  .divider { height: 1px; background: #1f2937; margin: 48px 0; }
+
+  .phone-strip { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; margin-bottom: 16px; }
+  .phone-col { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .phone-label { font-size: 12px; font-weight: 700; color: #d1d5db; }
+  .phone-sub { font-size: 11px; color: #6b7280; text-align: center; max-width: 200px; line-height: 1.4; }
+
+  .phone {
+    border-radius: 32px; border: 4px solid #374151;
+    position: relative; overflow: hidden;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    background: #fff8f0;
+  }
+  .phone::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 64px; height: 17px; background: #374151; border-radius: 0 0 12px 12px; z-index: 30;
+  }
+  .ph-tall  { width: 210px; height: 430px; }
+  .ph-med   { width: 210px; height: 380px; }
+  .ph-short { width: 210px; height: 320px; }
+
+  .top-bar {
+    position: absolute; top: 0; left: 0; right: 0; height: 48px;
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 14px; z-index: 10;
+  }
+  .top-bar.light-bar { background: rgba(255,248,240,0.92); }
+  .top-bar.dark-bar  { background: rgba(0,15,34,0.75); }
+  .bar-logo { font-family: Georgia, serif; font-size: 9px; font-weight: 700; color: #000f22; }
+  .bar-logo.lgt { color: #fff8f0; }
+  .ham { display: flex; flex-direction: column; gap: 3px; width: 44px; height: 44px; align-items: center; justify-content: center; }
+  .ham span { display: block; width: 16px; height: 1.5px; border-radius: 2px; }
+  .ham.dk span { background: #000f22; }
+  .ham.lt span { background: #fff8f0; }
+
+  .change-badge {
+    display: inline-block; font-size: 9px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 2px 8px; border-radius: 999px; margin-left: 8px;
+  }
+  .badge-new { background: rgba(96,246,229,0.15); color: #60f6e5; }
+  .badge-mod { background: rgba(249,115,22,0.15); color: #f97316; }
+  .badge-min { background: rgba(107,114,128,0.2); color: #9ca3af; }
+  .badge-hide { background: rgba(239,68,68,0.12); color: #ef4444; }
+
+  .ps-header { display: flex; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 4px; }
+  .ps-title { font-size: 16px; font-weight: 700; color: #fff; }
+
+  /* ══════════════════════════════════════════
+     PODCAST
+  ══════════════════════════════════════════ */
+
+  /* Hero: stacks text → image */
+  .pod-hero-bg { background: #fff8f0; position: absolute; top: 48px; left: 0; right: 0; padding: 14px; }
+  .live-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 10px; border-radius: 999px; background: #002a1a; margin-bottom: 10px;
+  }
+  .chip-icon { font-size: 10px; color: #68947d; }
+  .chip-lbl { font-size: 7px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #68947d; }
+  .pod-title { font-family: Georgia, serif; font-size: 22px; font-weight: 700; color: #000f22; line-height: 1.1; margin-bottom: 6px; }
+  .pod-title .teal { color: #006a61; }
+  .pod-desc { font-size: 9px; color: #43474d; line-height: 1.5; margin-bottom: 10px; }
+  .pod-btns { display: flex; gap: 8px; margin-bottom: 12px; }
+  .btn-listen { display: flex; align-items: center; gap: 6px; padding: 8px 14px; background: #000f22; color: #fff8f0; border-radius: 6px; font-size: 9px; font-weight: 600; }
+  .btn-sub { display: flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid rgba(196,198,206,0.6); border-radius: 6px; font-size: 9px; font-weight: 600; color: #000f22; }
+
+  /* Podcast image card — full width below text */
+  .pod-img-card {
+    border-radius: 12px; overflow: hidden; position: relative;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #7a9ab8, #4a7090);
+  }
+  .pod-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,15,34,0.75) 0%, transparent 60%); }
+  .hosted-strip { position: absolute; bottom: 10px; left: 12px; right: 12px; display: flex; align-items: center; gap: 10px; }
+  .host-icon { width: 32px; height: 32px; background: #006a61; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .host-icon-inner { font-size: 14px; color: #fff; }
+  .hosted-lbl { font-family: Georgia, serif; font-size: 11px; font-weight: 700; color: #fff8f0; }
+
+  /* Featured Performance — stacked */
+  .feat-perf { background: #0a2540; padding: 14px; }
+  .feat-title { font-family: Georgia, serif; font-size: 14px; font-weight: 700; color: #fff8f0; margin-bottom: 10px; }
+  .feat-card-stacked { background: #fff; border-radius: 10px; overflow: hidden; }
+  .feat-thumb { position: relative; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a3a5c, #0a2540); display: flex; align-items: center; justify-content: center; }
+  .play-circle { width: 44px; height: 44px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+  .play-tri { font-size: 20px; color: #000f22; }
+  .feat-body { padding: 12px; }
+  .ep-lbl { font-size: 7px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #006a61; margin-bottom: 4px; display: block; }
+  .ep-ttl { font-family: Georgia, serif; font-size: 12px; font-weight: 700; color: #000f22; line-height: 1.3; margin-bottom: 6px; }
+  .ep-dsc { font-size: 9px; color: #43474d; line-height: 1.5; margin-bottom: 8px; }
+  .guest-row { display: flex; align-items: center; gap: 8px; }
+  .g-avatar { width: 24px; height: 24px; border-radius: 50%; background: #e9e2d7; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+  .g-name { font-size: 9px; color: #74777e; }
+
+  /* Episodes grid → 1-col */
+  .episodes-wrap { background: #fff8f0; padding: 12px 14px; }
+  .ep-grid-title { font-family: Georgia, serif; font-size: 13px; font-weight: 700; color: #000f22; margin-bottom: 4px; }
+  .ep-underline { width: 40px; height: 2px; background: #006a61; margin-bottom: 10px; }
+  .ep-card { background: #faf3e7; border-radius: 10px; padding: 12px; margin-bottom: 8px; }
+  .ep-thumb-mini { border-radius: 6px; aspect-ratio: 16/9; background: #000f22; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; position: relative; }
+  .ep-thumb-icon { font-size: 24px; color: #006a61; opacity: 0.5; }
+  .dur-badge { position: absolute; bottom: 6px; left: 6px; background: rgba(0,15,34,0.85); color: #fff8f0; font-size: 7px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; padding: 2px 6px; border-radius: 2px; }
+  .thumb-play-sm { position: absolute; bottom: 6px; right: 6px; width: 24px; height: 24px; background: #006a61; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #fff; }
+  .epc-title { font-family: Georgia, serif; font-size: 11px; font-weight: 700; color: #000f22; line-height: 1.3; margin-bottom: 4px; }
+  .epc-footer { display: flex; align-items: center; justify-content: flex-end; padding-top: 8px; border-top: 1px solid rgba(196,198,206,0.3); }
+  .listen-now { font-size: 9px; font-weight: 700; color: #006a61; }
+
+  /* CTA card */
+  .pod-cta { margin: 12px 14px; background: #000f22; border-radius: 20px; padding: 24px 16px; text-align: center; position: relative; overflow: hidden; }
+  .pod-cta-title { font-family: Georgia, serif; font-size: 16px; font-weight: 700; color: #fff8f0; line-height: 1.2; margin-bottom: 8px; }
+  .pod-cta-desc { font-size: 9px; color: rgba(255,248,240,0.65); line-height: 1.5; margin-bottom: 14px; }
+  .pod-cta-btn { display: inline-block; padding: 9px 20px; background: #006a61; color: #fff; border-radius: 999px; font-size: 10px; font-weight: 700; }
+
+  /* ══════════════════════════════════════════
+     INSIGHTS
+  ══════════════════════════════════════════ */
+
+  .ins-hero-bg { background: #000f22; position: absolute; top: 0; left: 0; right: 0; height: 140px; overflow: hidden; }
+  .ins-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(0,106,97,0.12), transparent 70%); }
+  .ins-hero-txt { position: absolute; bottom: 14px; left: 14px; right: 14px; z-index: 2; }
+  .ins-hero-title { font-family: Georgia, serif; font-size: 20px; font-weight: 700; color: #fff8f0; line-height: 1.1; margin-bottom: 4px; }
+  .ins-hero-desc { font-size: 9px; color: rgba(255,248,240,0.65); line-height: 1.5; }
+
+  .ins-featured { position: absolute; top: 188px; left: 0; right: 0; bottom: 0; background: #fff8f0; overflow: hidden; }
+  .ins-feat-hdr { display: flex; align-items: center; gap: 8px; padding: 12px 14px 0; }
+  .ins-feat-icon { font-size: 14px; color: #006a61; }
+  .ins-feat-title { font-family: Georgia, serif; font-size: 14px; font-weight: 700; color: #000f22; }
+  .ins-feat-card { margin: 10px 14px; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 24px rgba(10,37,64,0.07); }
+  .ins-feat-thumb { background: #f4ede2; height: 90px; display: flex; align-items: center; justify-content: center; }
+  .ins-feat-thumb-icon { font-size: 36px; color: #006a61; opacity: 0.35; }
+  .ins-feat-body { background: #fff; padding: 12px; }
+  .ins-tags-row { display: flex; gap: 5px; margin-bottom: 6px; }
+  .i-tag { font-size: 7px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 999px; background: rgba(96,246,229,0.15); color: #006a61; }
+  .ins-art-title { font-family: Georgia, serif; font-size: 12px; font-weight: 700; color: #000f22; line-height: 1.3; margin-bottom: 6px; }
+  .ins-art-desc { font-size: 9px; color: #43474d; line-height: 1.5; margin-bottom: 8px; }
+  .ins-read-btn { display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: #006a61; color: #fff; border-radius: 4px; font-size: 9px; font-weight: 600; }
+
+  .approve-hint { text-align: center; font-size: 12px; color: #4b5563; margin-top: 40px; }
+</style>
+</head>
+<body>
+
+<h1>Design Section 3 of 3</h1>
+<h2>Podcast & Insights</h2>
+<p class="section-sub">The two most layout-complex pages. Both have side-by-side grids that break badly on mobile — here's the fix for each.</p>
+
+<!-- ══ PODCAST ══ -->
+<div class="ps-header">
+  <div class="ps-title">Podcast</div>
+  <span class="change-badge badge-mod">Hero stacks text → image</span>
+  <span class="change-badge badge-mod">Featured card stacks</span>
+  <span class="change-badge badge-mod">3-col grid → 1-col</span>
+  <span class="change-badge badge-hide">Border frame hidden</span>
+</div>
+
+<div class="phone-strip">
+
+  <!-- Podcast Hero stacked -->
+  <div class="phone-col">
+    <div class="phone ph-tall">
+      <div class="top-bar light-bar">
+        <span class="bar-logo">Dr. Alexander J. Blood</span>
+        <div class="ham dk"><span></span><span></span><span></span></div>
+      </div>
+      <div style="position:absolute;top:48px;left:0;right:0;bottom:0;overflow:hidden;">
+        <div style="padding:14px;background:#fff8f0;">
+          <div class="live-chip">
+            <span class="chip-icon">≋</span>
+            <span class="chip-lbl">Latest Episode Live</span>
+          </div>
+          <div class="pod-title">CardioAI <span class="teal">Conversations</span></div>
+          <div class="pod-desc">Where Cardiology, AI, and Clinical Transformation Meet.</div>
+          <div class="pod-btns">
+            <div class="btn-listen"><span>▶</span> Listen Now</div>
+            <div class="btn-sub"><span>🔔</span> Subscribe</div>
+          </div>
+          <!-- Image below text, full width -->
+          <div class="pod-img-card">
+            <div class="pod-img-overlay"></div>
+            <div class="hosted-strip">
+              <div class="host-icon"><span class="host-icon-inner">🎙</span></div>
+              <div class="hosted-lbl">Hosted by Dr. Blood</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">Hero — Text → Image</div>
+    <div class="phone-sub">7fr/5fr grid collapses to column. Image is 16:9, full width. Decorative border frame hidden (overflow risk).</div>
+  </div>
+
+  <!-- Featured Performance stacked -->
+  <div class="phone-col">
+    <div class="phone ph-tall">
+      <div class="top-bar light-bar">
+        <span class="bar-logo">Dr. Alexander J. Blood</span>
+        <div class="ham dk"><span></span><span></span><span></span></div>
+      </div>
+      <div style="position:absolute;top:48px;left:0;right:0;bottom:0;overflow:hidden;">
+        <div class="feat-perf">
+          <div class="feat-title">Featured Performance</div>
+          <div class="feat-card-stacked">
+            <!-- Thumbnail on top -->
+            <div class="feat-thumb">
+              <div class="play-circle"><span class="play-tri">▶</span></div>
+            </div>
+            <!-- Body below -->
+            <div class="feat-body">
+              <span class="ep-lbl">Season 2, Episode 14</span>
+              <div class="ep-ttl">The Future of LLMs in Acute Cardiac Care</div>
+              <div class="ep-dsc">Dr. Blood explores ethical implications of real-time AI diagnostics in the ICU.</div>
+              <div class="guest-row">
+                <div class="g-avatar">👤</div>
+                <div class="g-avatar" style="margin-left:-6px;">👤</div>
+                <span class="g-name">Dr. Sarah Chen & Alex Rivera</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="episodes-wrap">
+          <div class="ep-grid-title">Featured Conversations</div>
+          <div class="ep-underline"></div>
+          <div class="ep-card">
+            <div class="ep-thumb-mini">
+              <span class="ep-thumb-icon">🧠</span>
+              <div class="dur-badge">42 min</div>
+              <div class="thumb-play-sm">▶</div>
+            </div>
+            <div class="epc-title">AI Ethics in Emergency Medicine</div>
+            <div class="epc-footer"><span class="listen-now">Listen Now →</span></div>
+          </div>
+          <div class="ep-card">
+            <div class="ep-thumb-mini">
+              <span class="ep-thumb-icon">🫀</span>
+              <div class="dur-badge">38 min</div>
+              <div class="thumb-play-sm">▶</div>
+            </div>
+            <div class="epc-title">Predictive Scoring in the Cardiac ICU</div>
+            <div class="epc-footer"><span class="listen-now">Listen Now →</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">Featured + Episode Grid</div>
+    <div class="phone-sub">2fr/3fr featured card stacks thumbnail on top. 3-col episode grid → 1-col stacked cards.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="phone-col">
+    <div class="phone ph-short">
+      <div class="top-bar light-bar" style="position:relative;margin-bottom:0;">
+        <span class="bar-logo">Dr. Alexander J. Blood</span>
+        <div class="ham dk"><span></span><span></span><span></span></div>
+      </div>
+      <div style="position:absolute;top:48px;left:0;right:0;bottom:0;overflow:hidden;background:#fff8f0;">
+        <div class="pod-cta" style="margin:14px;">
+          <div class="pod-cta-title">Have a Vision for the Future of Cardiology?</div>
+          <div class="pod-cta-desc">We're always looking for innovators and clinicians to share their journey on CardioAI Conversations.</div>
+          <div class="pod-cta-btn">Apply to Be a Guest</div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">Guest CTA</div>
+    <div class="phone-sub">border-radius: 40px → 20px. Padding reduced. Button full-width. Background image retained at reduced opacity.</div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ INSIGHTS ══ -->
+<div class="ps-header">
+  <div class="ps-title">Insights</div>
+  <span class="change-badge badge-hide">Glass panel hidden</span>
+  <span class="change-badge badge-mod">Featured card stacks</span>
+</div>
+
+<div class="phone-strip">
+
+  <!-- Insights Hero -->
+  <div class="phone-col">
+    <div class="phone ph-tall">
+      <div class="top-bar dark-bar">
+        <span class="bar-logo lgt">Dr. Alexander J. Blood</span>
+        <div class="ham lt"><span></span><span></span><span></span></div>
+      </div>
+      <div style="position:absolute;top:0;left:0;right:0;height:188px;background:#000f22;overflow:hidden;">
+        <div class="ins-glow"></div>
+        <div class="ins-hero-txt" style="position:absolute;bottom:14px;left:14px;right:14px;z-index:2;">
+          <div class="ins-hero-title">Insights & Media</div>
+          <div class="ins-hero-desc">Synthesizing clinical expertise with machine intelligence. Exploring the digital pulse of modern medicine.</div>
+        </div>
+      </div>
+      <div style="position:absolute;top:188px;left:0;right:0;bottom:0;background:#fff8f0;overflow:hidden;">
+        <div class="ins-feat-hdr">
+          <span class="ins-feat-icon">📖</span>
+          <span class="ins-feat-title">Featured Insight</span>
+        </div>
+        <div class="ins-feat-card">
+          <!-- Thumbnail stacked on top -->
+          <div class="ins-feat-thumb">
+            <span class="ins-feat-thumb-icon">🫀</span>
+          </div>
+          <!-- Body below -->
+          <div class="ins-feat-body">
+            <div class="ins-tags-row">
+              <span class="i-tag">Cardiology</span>
+              <span class="i-tag">AI</span>
+            </div>
+            <div class="ins-art-title">The Algorithmic Heart: Predictive Modeling in Acute Care</div>
+            <div class="ins-art-desc">An exploration of how deep learning architectures are being deployed to predict cardiac events before clinical symptoms manifest.</div>
+            <div class="ins-read-btn">Read Full Insight →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">Insights</div>
+    <div class="phone-sub">1fr/1fr hero grid collapses: glass panel icon hidden (decorative only). Featured card stacks thumbnail → body.</div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<!-- SUMMARY TABLE -->
+<h3>Complete Change Summary</h3>
+<div style="background:#1f2937;border-radius:12px;overflow:hidden;border:1px solid #374151;">
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#111827;">
+        <th style="padding:10px 14px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:#9ca3af;font-weight:700;">Page / Component</th>
+        <th style="padding:10px 14px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:#9ca3af;font-weight:700;">Desktop Layout</th>
+        <th style="padding:10px 14px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:#9ca3af;font-weight:700;">Mobile Treatment</th>
+      </tr>
+    </thead>
+    <tbody style="font-size:11px;">
+      <tr style="border-top:1px solid #374151;">
+        <td style="padding:10px 14px;color:#f9fafb;font-weight:600;">Nav</td>
+        <td style="padding:10px 14px;color:#6b7280;">Inline links</td>
+        <td style="padding:10px 14px;color:#60f6e5;">Hamburger + slide-out drawer</td>
+      </tr>
+      <tr style="border-top:1px solid #374151;background:#111827;">
+        <td style="padding:10px 14px;color:#f9fafb;font-weight:600;">Home Hero</td>
+        <td style="padding:10px 14px;color:#6b7280;">55%/45% flex, photo right</td>
+        <td style="padding:10px 14px;color:#f97316;">Cinematic full-bleed, text overlay</td>
+      </tr>
+      <tr style="border-top:1px solid #374151;">
+        <td style="padding:10px 14px;color:#f9fafb;font-weight:600;">Home Insights Grid</td>
+        <td style="padding:10px 14px;color:#6b7280;">flex row, 3 cards</td>
+        <td style="padding:10px 14px;color:#f97316;">Stacked 1-col cards</td>
+      </tr>
+      <tr style="border-top:1px solid #374151;background:#111827;">
+        <td style="padding:10px 14px;color:#f9fafb;font-weight:600;">About Hero</td>
+        <td style="padding:10px 14px;color:#6b7280;">7fr/5fr grid, floating roles card</td>
+        <td style="padding:10px 14px;color:#f97316;">Stacked: text → photo → inline roles card</td>
+      </tr>
+      <tr style="border-top:1px solid #374151;">
+        <td style="padding:10px 14px;color:#f9fafb;font-weight:600;">About Affiliations</td>
+        <td style="padding:10px 14px;color:#6b7280;">4-col grid with logo images</td>
+        <td style="padding:10px 14px;color:#f97316;">2-col grid, same logo images</td>
+      </tr>
+      <tr style="border-top:1px solid #374151;background:#111827;">
+        <td style="padding:10px 14px;color:#f9fafb;font-weight:600;">Expertise Cards</td>
+        <td style="padding:10px 14px;color:#6b7280;">2-col grid</td>
+        <td style="padding:10px 14px;color:#f97316;">1-col stacked</td>
+      </tr>
+      <tr style="border-top:1px solid #374151;">
+        <td style="padding:10px 14px;color:#f9fafb;font-weight:600;">Expertise / Pub Hero Icon</td>
+        <td style="padding:10px 14px;color:#6b7280;">220px decorative icon</td>
+        <td style="padding:10px 14px;color:#ef4444;">Hidden (display: none)</td>
+      </tr>
+      <tr style="border-top:1px solid #374151;background:#111827;">
+        <td style="padding:10px 14px;color:#f9fafb;font-weight:600;">Publications Filters</td>
+        <td style="padding:10px 14px;color:#6b7280;">flex-wrap</td>
+        <td style="padding:10px 14px;color:#f97316;">horizontal scroll (nowrap)</td>
+      </tr>
+      <tr style="border-top:1px solid #374151;">
+        <td style="padding:10px 14px;color:#f9fafb;font-weight:600;">Insights Hero</td>
+        <td style="padding:10px 14px;color:#6b7280;">1fr/1fr, glass panel right</td>
+        <td style="padding:10px 14px;color:#ef4444;">Glass panel hidden, full-width text</td>
+      </tr>
+      <tr style="border-top:1px solid #374151;background:#111827;">
+        <td style="padding:10px 14px;color:#f9fafb;font-weight:600;">Insights Featured Card</td>
+        <td style="padding:10px 14px;color:#6b7280;">1fr/2fr side-by-side</td>
+        <td style="padding:10px 14px;color:#f97316;">Thumbnail top, body below</td>
+      </tr>
+      <tr style="border-top:1px solid #374151;">
+        <td style="padding:10px 14px;color:#f9fafb;font-weight:600;">Podcast Hero</td>
+        <td style="padding:10px 14px;color:#6b7280;">7fr/5fr, image right</td>
+        <td style="padding:10px 14px;color:#f97316;">Stacked text → 16:9 image</td>
+      </tr>
+      <tr style="border-top:1px solid #374151;background:#111827;">
+        <td style="padding:10px 14px;color:#f9fafb;font-weight:600;">Podcast Featured Card</td>
+        <td style="padding:10px 14px;color:#6b7280;">2fr/3fr side-by-side</td>
+        <td style="padding:10px 14px;color:#f97316;">Thumbnail top, body below</td>
+      </tr>
+      <tr style="border-top:1px solid #374151;">
+        <td style="padding:10px 14px;color:#f9fafb;font-weight:600;">Podcast Episode Grid</td>
+        <td style="padding:10px 14px;color:#6b7280;">3-col grid</td>
+        <td style="padding:10px 14px;color:#f97316;">1-col stacked</td>
+      </tr>
+      <tr style="border-top:1px solid #374151;background:#111827;">
+        <td style="padding:10px 14px;color:#f9fafb;font-weight:600;">Podcast Border Frame</td>
+        <td style="padding:10px 14px;color:#6b7280;">absolute offset decoration</td>
+        <td style="padding:10px 14px;color:#ef4444;">Hidden (overflow risk)</td>
+      </tr>
+      <tr style="border-top:1px solid #374151;">
+        <td style="padding:10px 14px;color:#f9fafb;font-weight:600;">Contact Form</td>
+        <td style="padding:10px 14px;color:#6b7280;">max-width 640px centered</td>
+        <td style="padding:10px 14px;color:#9ca3af;">Padding only + submit full-width</td>
+      </tr>
+      <tr style="border-top:1px solid #374151;background:#111827;">
+        <td style="padding:10px 14px;color:#f9fafb;font-weight:600;">Timeline</td>
+        <td style="padding:10px 14px;color:#6b7280;">Single column</td>
+        <td style="padding:10px 14px;color:#9ca3af;">No changes needed</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="approve-hint">Does this look complete and correct? Approve and I'll write the spec doc.</p>
+
+</body>
+</html>

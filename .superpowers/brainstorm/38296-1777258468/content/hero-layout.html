@@ -1,0 +1,275 @@
+<style>
+  body { background: #f0f0f0; }
+  .page-title { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; text-align: center; }
+  .page-sub { font-family: 'Inter', sans-serif; font-size: 14px; color: #666; text-align: center; margin-bottom: 32px; }
+
+  .phones { display: flex; gap: 32px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+
+  .phone-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+
+  .phone {
+    width: 220px;
+    height: 440px;
+    background: #fff8f0;
+    border-radius: 32px;
+    border: 5px solid #1a1a2e;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .phone-wrap:hover .phone { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+
+  /* notch */
+  .phone::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 70px; height: 18px;
+    background: #1a1a2e;
+    border-radius: 0 0 14px 14px;
+    z-index: 20;
+  }
+
+  /* Shared top nav */
+  .top-nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 48px;
+    background: rgba(255,248,240,0.92);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px;
+    z-index: 10;
+  }
+  .nav-logo-txt {
+    font-family: Georgia, serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: #000f22;
+    letter-spacing: -0.01em;
+  }
+  .ham { display: flex; flex-direction: column; gap: 3px; }
+  .ham span { display: block; width: 16px; height: 1.5px; background: #000f22; border-radius: 2px; }
+
+  /* Shared content pieces */
+  .chip-tag {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 7px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #006a61;
+    background: rgba(96,246,229,0.15);
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #000f22;
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+  .headline .teal { color: #006a61; font-style: italic; }
+  .tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    color: #43474d;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .role-tags {
+    display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 10px;
+  }
+  .rtag {
+    font-size: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 2px 6px; border: 1px solid rgba(196,198,206,0.5); border-radius: 3px;
+    color: #43474d; font-family: 'Inter', sans-serif;
+  }
+  .btns { display: flex; gap: 6px; align-items: center; }
+  .btn-p {
+    padding: 6px 10px; background: #006a61; color: #fff;
+    border-radius: 3px; font-family: 'Inter', sans-serif;
+    font-size: 8px; font-weight: 600;
+  }
+  .btn-g {
+    font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 600; color: #000f22;
+  }
+
+  .photo-box {
+    background: linear-gradient(160deg, #b0c4d8, #7a9ab8);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.5); font-size: 10px; font-family: 'Inter', sans-serif;
+    position: relative; overflow: hidden;
+  }
+  .photo-box::after {
+    content: '🖼';
+    font-size: 28px;
+    opacity: 0.4;
+  }
+
+  /* ── A: Text top, Photo bottom ── */
+  .phone-a .content-area {
+    position: absolute;
+    top: 48px; left: 0; right: 0; bottom: 0;
+    display: flex; flex-direction: column;
+  }
+  .phone-a .text-block {
+    padding: 14px 14px 10px;
+    background: #fff8f0;
+    flex-shrink: 0;
+  }
+  .phone-a .photo-box {
+    flex: 1;
+  }
+
+  /* ── B: Photo top, Text bottom ── */
+  .phone-b .content-area {
+    position: absolute;
+    top: 48px; left: 0; right: 0; bottom: 0;
+    display: flex; flex-direction: column;
+  }
+  .phone-b .photo-box {
+    height: 150px;
+    flex-shrink: 0;
+  }
+  .phone-b .text-block {
+    padding: 12px 14px;
+    background: #fff8f0;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  /* ── C: Full-bleed photo bg, text overlay ── */
+  .phone-c .content-area {
+    position: absolute;
+    top: 48px; left: 0; right: 0; bottom: 0;
+  }
+  .phone-c .photo-box {
+    position: absolute;
+    inset: 0;
+  }
+  .phone-c .photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,15,34,0.92) 50%, rgba(0,15,34,0.4) 100%);
+  }
+  .phone-c .text-block {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 16px 14px;
+  }
+  .phone-c .headline { font-size: 17px; color: #fff8f0; }
+  .phone-c .headline .teal { color: #60f6e5; }
+  .phone-c .tagline { color: rgba(255,248,240,0.7); }
+  .phone-c .chip-tag { color: #60f6e5; background: rgba(96,246,229,0.1); }
+  .phone-c .btn-g { color: rgba(255,248,240,0.8); }
+  .phone-c .rtag { border-color: rgba(255,255,255,0.2); color: rgba(255,248,240,0.6); }
+
+  /* Labels */
+  .phone-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; font-weight: 700; color: #1a1a2e;
+  }
+  .phone-desc {
+    font-family: 'Inter', sans-serif; font-size: 11px; color: #888;
+    text-align: center; max-width: 200px; line-height: 1.5;
+  }
+
+  .select-hint {
+    font-family: 'Inter', sans-serif; font-size: 12px; color: #999;
+    text-align: center; margin-top: 28px;
+  }
+</style>
+
+<p class="page-title">Hero Section — Mobile Layout</p>
+<p class="page-sub">How should the homepage hero (headline + photo) stack on mobile?</p>
+
+<div class="phones">
+
+  <!-- A: Text first, photo below -->
+  <div class="phone-wrap option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="phone phone-a">
+      <div class="top-nav">
+        <span class="nav-logo-txt">Dr. Alexander J. Blood</span>
+        <div class="ham"><span></span><span></span><span></span></div>
+      </div>
+      <div class="content-area">
+        <div class="text-block">
+          <div class="chip-tag">Innovation in Care</div>
+          <div class="headline">Cardiologist.<br>Intensivist.<br><span class="teal">AI Innovator.</span></div>
+          <div class="tagline">Transforming Cardiometabolic Care at the Bedside and Beyond.</div>
+          <div class="btns">
+            <div class="btn-p">View Publications</div>
+            <div class="btn-g">Request Interview →</div>
+          </div>
+        </div>
+        <div class="photo-box"></div>
+      </div>
+    </div>
+    <div class="phone-label">A — Headline First</div>
+    <div class="phone-desc">Text & CTAs at top, photo fills remaining space below. Visitor reads the pitch before seeing the face.</div>
+  </div>
+
+  <!-- B: Photo first, text below -->
+  <div class="phone-wrap option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="phone phone-b">
+      <div class="top-nav">
+        <span class="nav-logo-txt">Dr. Alexander J. Blood</span>
+        <div class="ham"><span></span><span></span><span></span></div>
+      </div>
+      <div class="content-area">
+        <div class="photo-box"></div>
+        <div class="text-block">
+          <div class="chip-tag">Innovation in Care</div>
+          <div class="headline">Cardiologist.<br>Intensivist.<br><span class="teal">AI Innovator.</span></div>
+          <div class="tagline">Transforming Cardiometabolic Care at the Bedside and Beyond.</div>
+          <div class="btns">
+            <div class="btn-p">View Publications</div>
+            <div class="btn-g">Interview →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">B — Face First</div>
+    <div class="phone-desc">Photo banner at top, content scrolls below. Creates immediate personal connection before the pitch.</div>
+  </div>
+
+  <!-- C: Cinematic overlay -->
+  <div class="phone-wrap option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="phone phone-c">
+      <div class="top-nav" style="background: rgba(0,15,34,0.5);">
+        <span class="nav-logo-txt" style="color: #fff8f0;">Dr. Alexander J. Blood</span>
+        <div class="ham"><span style="background:#fff8f0;"></span><span style="background:#fff8f0;"></span><span style="background:#fff8f0;"></span></div>
+      </div>
+      <div class="content-area">
+        <div class="photo-box"></div>
+        <div class="photo-overlay"></div>
+        <div class="text-block">
+          <div class="chip-tag">Innovation in Care</div>
+          <div class="headline">Cardiologist.<br>Intensivist.<br><span class="teal">AI Innovator.</span></div>
+          <div class="tagline">Transforming Cardiometabolic Care at the Bedside and Beyond.</div>
+          <div class="btns">
+            <div class="btn-p">View Publications</div>
+            <div class="btn-g" style="color:rgba(255,248,240,0.8);">Interview →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">C — Cinematic</div>
+    <div class="phone-desc">Full-bleed photo with dark gradient overlay. Text floats on top. High-impact, editorial feel.</div>
+  </div>
+
+</div>
+
+<p class="select-hint">Click a phone to select — all three scroll naturally below the fold</p>

@@ -1,0 +1,354 @@
+<style>
+  body { background: #f5f5f5; }
+  .page-title { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; text-align: center; }
+  .page-sub { font-family: 'Inter', sans-serif; font-size: 14px; color: #666; text-align: center; margin-bottom: 32px; }
+
+  .phones { display: flex; gap: 40px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+
+  .phone-wrap { display: flex; flex-direction: column; align-items: center; gap: 16px; cursor: pointer; }
+  .phone-wrap:hover .phone { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+
+  .phone {
+    width: 240px;
+    height: 480px;
+    background: #fff8f0;
+    border-radius: 36px;
+    border: 6px solid #1a1a2e;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  /* Phone notch */
+  .phone::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 80px; height: 22px;
+    background: #1a1a2e;
+    border-radius: 0 0 16px 16px;
+    z-index: 10;
+  }
+
+  /* ── Option A: Hamburger ── */
+  .phone-a .top-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 52px;
+    background: rgba(255,248,240,0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(196,198,206,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    z-index: 5;
+  }
+  .phone-a .top-bar-logo {
+    font-family: Georgia, serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #000f22;
+    letter-spacing: -0.02em;
+  }
+  .hamburger { display: flex; flex-direction: column; gap: 4px; cursor: pointer; }
+  .hamburger span { display: block; width: 20px; height: 2px; background: #000f22; border-radius: 2px; }
+
+  /* Slide-out drawer */
+  .drawer {
+    position: absolute;
+    top: 0; right: 0;
+    width: 170px;
+    height: 100%;
+    background: #000f22;
+    z-index: 20;
+    padding: 60px 20px 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .drawer-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,248,240,0.7);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    letter-spacing: 0.02em;
+  }
+  .drawer-link.active-link { color: #60f6e5; }
+  .drawer-cta {
+    margin-top: 20px;
+    padding: 10px 16px;
+    background: #006a61;
+    color: #fff;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  /* content behind drawer */
+  .phone-a .page-content {
+    position: absolute;
+    top: 52px; left: 0; right: 0; bottom: 0;
+    padding: 20px 16px;
+    filter: brightness(0.5);
+  }
+  .content-hero {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #000f22;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .content-sub {
+    font-size: 11px;
+    color: #43474d;
+    line-height: 1.5;
+  }
+  .content-tag {
+    display: inline-block;
+    font-size: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #006a61;
+    background: rgba(96,246,229,0.15);
+    padding: 3px 8px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+
+  /* ── Option B: Bottom Nav ── */
+  .phone-b .top-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 52px;
+    background: rgba(255,248,240,0.9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+  }
+  .phone-b .top-bar-logo {
+    font-family: Georgia, serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #000f22;
+    letter-spacing: -0.02em;
+  }
+  .phone-b .page-content {
+    position: absolute;
+    top: 52px; left: 0; right: 0; bottom: 60px;
+    padding: 20px 16px;
+    overflow: hidden;
+  }
+  .bottom-nav {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60px;
+    background: #fff;
+    border-top: 1px solid rgba(196,198,206,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 4px;
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.06);
+  }
+  .bot-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    flex: 1;
+  }
+  .bot-icon {
+    width: 20px; height: 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .bot-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 8px;
+    color: #aaa;
+    font-weight: 500;
+  }
+  .bot-item.active .bot-label { color: #006a61; font-weight: 700; }
+  .bot-item.active .bot-icon svg path, .bot-item.active .bot-icon { color: #006a61; }
+
+  /* More indicator */
+  .more-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #ff4444;
+    position: absolute;
+    top: 2px; right: 2px;
+  }
+
+  /* Labels */
+  .phone-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a2e;
+  }
+  .phone-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+    max-width: 220px;
+    line-height: 1.5;
+  }
+
+  /* Pros/cons below */
+  .compare-grid {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+  .compare-col {
+    width: 240px;
+  }
+  .compare-col h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #666;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .compare-item {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #444;
+    padding: 4px 0;
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.4;
+  }
+  .compare-item::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #006a61;
+    font-size: 10px;
+  }
+
+  .select-hint {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+    margin-top: 28px;
+  }
+</style>
+
+<p class="page-title">Mobile Navigation Pattern</p>
+<p class="page-sub">How should users navigate between the 7 sections on mobile?</p>
+
+<div class="phones">
+
+  <!-- Option A: Hamburger -->
+  <div class="phone-wrap option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="phone phone-a">
+      <!-- Top bar -->
+      <div class="top-bar">
+        <span class="top-bar-logo">Dr. Alexander J. Blood</span>
+        <div class="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <!-- Dimmed page content -->
+      <div class="page-content">
+        <span class="content-tag">Innovation in Care</span>
+        <div class="content-hero">Cardiologist.<br>Intensivist.<br><span style="color:#006a61;font-style:italic">AI Innovator.</span></div>
+        <div class="content-sub">Transforming Cardiometabolic Care at the Bedside and Beyond.</div>
+      </div>
+      <!-- Slide-out drawer (shown open) -->
+      <div class="drawer">
+        <div class="drawer-link active-link">Home</div>
+        <div class="drawer-link">About</div>
+        <div class="drawer-link">Expertise</div>
+        <div class="drawer-link">Publications</div>
+        <div class="drawer-link">Insights</div>
+        <div class="drawer-link">Podcast</div>
+        <div class="drawer-cta">Contact</div>
+      </div>
+    </div>
+    <div class="phone-label">A — Hamburger Menu</div>
+    <div class="phone-desc">Slide-out drawer from the right. All 7 links visible, Contact as a CTA button.</div>
+  </div>
+
+  <!-- Option B: Bottom Nav -->
+  <div class="phone-wrap option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="phone phone-b">
+      <!-- Top bar centered logo -->
+      <div class="top-bar">
+        <span class="top-bar-logo">Dr. Alexander J. Blood</span>
+      </div>
+      <!-- Page content -->
+      <div class="page-content">
+        <span class="content-tag">Innovation in Care</span>
+        <div class="content-hero">Cardiologist.<br>Intensivist.<br><span style="color:#006a61;font-style:italic">AI Innovator.</span></div>
+        <div class="content-sub">Transforming Cardiometabolic Care at the Bedside and Beyond.</div>
+      </div>
+      <!-- Bottom nav -->
+      <div class="bottom-nav">
+        <div class="bot-item active">
+          <div class="bot-icon">🏠</div>
+          <div class="bot-label">Home</div>
+        </div>
+        <div class="bot-item">
+          <div class="bot-icon">👤</div>
+          <div class="bot-label">About</div>
+        </div>
+        <div class="bot-item">
+          <div class="bot-icon">📄</div>
+          <div class="bot-label">Papers</div>
+        </div>
+        <div class="bot-item">
+          <div class="bot-icon">🎙</div>
+          <div class="bot-label">Podcast</div>
+        </div>
+        <div class="bot-item" style="position:relative">
+          <div class="bot-icon">···</div>
+          <div class="bot-label">More</div>
+          <div class="more-dot"></div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">B — Bottom Tab Bar</div>
+    <div class="phone-desc">App-style bottom nav. 4 primary tabs + "More" for Expertise, Insights & Contact.</div>
+  </div>
+
+</div>
+
+<div class="compare-grid">
+  <div class="compare-col">
+    <h4>Option A — Hamburger</h4>
+    <div class="compare-item">All 7 routes visible at once</div>
+    <div class="compare-item">Familiar pattern for professional sites</div>
+    <div class="compare-item">Logo stays prominent on left</div>
+    <div class="compare-item">Requires tap → open → tap to navigate</div>
+  </div>
+  <div class="compare-col">
+    <h4>Option B — Bottom Nav</h4>
+    <div class="compare-item">One tap to switch between primary routes</div>
+    <div class="compare-item">App-like feel, thumb-friendly</div>
+    <div class="compare-item">"More" needed for 3 secondary routes</div>
+    <div class="compare-item">Less common on professional/academic sites</div>
+  </div>
+</div>
+
+<p class="select-hint">Click a phone to select your preferred pattern</p>

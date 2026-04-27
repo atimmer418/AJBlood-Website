@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design Section 1 — System & Navigation</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: #111827; color: #f9fafb; padding: 32px 24px; }
+
+  h1 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #60f6e5; margin-bottom: 4px; }
+  h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .section-sub { font-size: 13px; color: #9ca3af; margin-bottom: 36px; line-height: 1.6; }
+
+  /* ─── BREAKPOINT TABLE ─── */
+  .bp-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .bp-card {
+    background: #1f2937;
+    border-radius: 10px;
+    padding: 16px;
+    border: 1px solid #374151;
+  }
+  .bp-card .bp-name { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #60f6e5; margin-bottom: 4px; }
+  .bp-card .bp-val { font-size: 20px; font-weight: 700; color: #fff; font-family: monospace; margin-bottom: 6px; }
+  .bp-card .bp-desc { font-size: 11px; color: #6b7280; line-height: 1.5; }
+  .bp-card.active { border-color: #006a61; background: rgba(0,106,97,0.12); }
+
+  /* ─── TOKEN TABLE ─── */
+  .token-section { margin-bottom: 40px; }
+  .token-section h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9ca3af; margin-bottom: 16px; }
+  .token-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .token-row {
+    display: flex; align-items: center; gap: 12px;
+    background: #1f2937; border-radius: 8px; padding: 10px 14px;
+    border: 1px solid #374151;
+  }
+  .token-name { font-size: 11px; font-family: monospace; color: #60f6e5; flex: 1; }
+  .token-val-group { display: flex; gap: 8px; align-items: center; }
+  .token-val { font-size: 10px; font-family: monospace; color: #9ca3af; }
+  .token-arrow { font-size: 10px; color: #374151; }
+  .token-mob { font-size: 11px; font-family: monospace; color: #f9fafb; font-weight: 600; }
+
+  /* ─── NAV DEMO ─── */
+  .nav-demo-wrap {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .phone-col { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .phone-label { font-size: 13px; font-weight: 600; color: #d1d5db; }
+  .phone-sub { font-size: 11px; color: #6b7280; text-align: center; max-width: 200px; }
+
+  .phone {
+    width: 230px; height: 460px;
+    background: #fff8f0;
+    border-radius: 34px;
+    border: 5px solid #374151;
+    position: relative; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .phone::before {
+    content: '';
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 72px; height: 20px;
+    background: #374151; border-radius: 0 0 14px 14px; z-index: 30;
+  }
+
+  /* Closed nav */
+  .top-bar {
+    position: absolute; top: 0; left: 0; right: 0; height: 50px;
+    background: rgba(255,248,240,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(196,198,206,0.15);
+    display: flex; align-items: center;
+    justify-content: space-between;
+    padding: 0 16px; z-index: 10;
+  }
+  .bar-logo {
+    font-family: Georgia, serif; font-size: 10px; font-weight: 700;
+    color: #000f22; letter-spacing: -0.01em;
+  }
+  .ham-btn {
+    width: 44px; height: 44px;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 4px; cursor: pointer;
+  }
+  .ham-btn span { display: block; width: 18px; height: 1.5px; background: #000f22; border-radius: 2px; }
+
+  /* Page content behind */
+  .pg-content {
+    position: absolute; top: 50px; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(160deg, #9ab0c8 0%, #6a8ba8 100%);
+  }
+  .pg-content-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,15,34,0.88) 40%, rgba(0,15,34,0.35) 100%);
+  }
+  .pg-text-block {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 16px;
+  }
+  .pg-chip {
+    display: inline-block; font-size: 7px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em; color: #60f6e5;
+    background: rgba(96,246,229,0.1); padding: 2px 8px;
+    border-radius: 999px; margin-bottom: 8px;
+  }
+  .pg-headline {
+    font-family: Georgia, serif; font-size: 19px; font-weight: 700;
+    color: #fff8f0; line-height: 1.15; margin-bottom: 6px;
+  }
+  .pg-headline em { color: #60f6e5; font-style: italic; }
+  .pg-tag { font-size: 9px; color: rgba(255,248,240,0.6); margin-bottom: 10px; }
+  .pg-btns { display: flex; gap: 8px; }
+  .pg-btn-p {
+    padding: 6px 12px; background: #006a61; color: #fff;
+    border-radius: 3px; font-size: 9px; font-weight: 600;
+  }
+  .pg-btn-g { font-size: 9px; font-weight: 600; color: rgba(255,248,240,0.8); align-self: center; }
+
+  /* Open drawer */
+  .drawer {
+    position: absolute; top: 0; right: 0;
+    width: 186px; height: 100%;
+    background: #000f22; z-index: 20;
+    display: flex; flex-direction: column;
+  }
+  .drawer-top {
+    height: 50px; display: flex; align-items: center;
+    justify-content: flex-end; padding: 0 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    flex-shrink: 0;
+  }
+  .close-btn {
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; color: rgba(255,248,240,0.4); cursor: pointer;
+  }
+  .drawer-links {
+    padding: 8px 0; flex: 1;
+  }
+  .d-link {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 20px;
+    font-size: 13px; font-weight: 500;
+    color: rgba(255,248,240,0.55);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    letter-spacing: 0.01em;
+  }
+  .d-link.active { color: #60f6e5; background: rgba(96,246,229,0.05); }
+  .d-link .d-dot {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: currentColor; flex-shrink: 0;
+  }
+  .drawer-cta-wrap { padding: 16px 20px 24px; }
+  .drawer-cta {
+    display: block; padding: 11px 16px;
+    background: #006a61; color: #fff;
+    border-radius: 4px; font-size: 12px; font-weight: 700;
+    text-align: center; letter-spacing: 0.02em;
+  }
+
+  /* Scrim */
+  .scrim {
+    position: absolute; top: 0; left: 0;
+    width: calc(100% - 186px); height: 100%;
+    background: rgba(0,0,0,0.45); z-index: 15;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+
+  /* ─── TOUCH TARGETS INFO ─── */
+  .spec-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    margin-bottom: 40px;
+  }
+  .spec-card {
+    background: #1f2937; border: 1px solid #374151;
+    border-radius: 10px; padding: 16px;
+  }
+  .spec-card .spec-icon { font-size: 20px; margin-bottom: 8px; }
+  .spec-card .spec-title { font-size: 12px; font-weight: 700; color: #f9fafb; margin-bottom: 4px; }
+  .spec-card .spec-body { font-size: 11px; color: #6b7280; line-height: 1.5; }
+  .spec-card .spec-val { font-size: 16px; font-weight: 700; color: #60f6e5; font-family: monospace; }
+
+  /* Section divider */
+  .divider { height: 1px; background: #1f2937; margin: 36px 0; }
+
+  .approve-hint {
+    text-align: center; font-size: 12px; color: #4b5563;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Design Section 1 of 3</h1>
+<h2>Global Responsive System + Navigation</h2>
+<p class="section-sub">Breakpoints, spacing token overrides, and the hamburger nav — the shared infrastructure every page inherits.</p>
+
+<!-- ─── BREAKPOINTS ─── -->
+<div class="token-section">
+  <h3>Breakpoints</h3>
+  <div class="bp-grid">
+    <div class="bp-card active">
+      <div class="bp-name">Phone</div>
+      <div class="bp-val">&lt; 480px</div>
+      <div class="bp-desc">iPhone 14 (390px), SE (375px). Primary mobile target. Single column everything.</div>
+    </div>
+    <div class="bp-card active">
+      <div class="bp-name">Tablet</div>
+      <div class="bp-val">480–768px</div>
+      <div class="bp-desc">Foldables, small tablets. Some 2-col layouts allowed where content density warrants.</div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">Desktop</div>
+      <div class="bp-val">768–1024px</div>
+      <div class="bp-desc">Laptops. Current desktop layout mostly intact, minor padding adjustments.</div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">Wide</div>
+      <div class="bp-val">&gt; 1024px</div>
+      <div class="bp-desc">Current site exactly as built. No changes at this range.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SPACING TOKENS ─── -->
+<div class="token-section">
+  <h3>Responsive Spacing Token Overrides (styles.scss)</h3>
+  <div class="token-grid">
+    <div class="token-row">
+      <span class="token-name">--page-px</span>
+      <div class="token-val-group">
+        <span class="token-val">40px desktop</span>
+        <span class="token-arrow">→</span>
+        <span class="token-mob">16px mobile</span>
+      </div>
+    </div>
+    <div class="token-row">
+      <span class="token-name">--section-py</span>
+      <div class="token-val-group">
+        <span class="token-val">72px desktop</span>
+        <span class="token-arrow">→</span>
+        <span class="token-mob">48px mobile</span>
+      </div>
+    </div>
+    <div class="token-row">
+      <span class="token-name">--hero-pt</span>
+      <div class="token-val-group">
+        <span class="token-val">100px desktop</span>
+        <span class="token-arrow">→</span>
+        <span class="token-mob">50px mobile</span>
+      </div>
+    </div>
+    <div class="token-row">
+      <span class="token-name">--nav-height</span>
+      <div class="token-val-group">
+        <span class="token-val">64px desktop</span>
+        <span class="token-arrow">→</span>
+        <span class="token-mob">52px mobile</span>
+      </div>
+    </div>
+    <div class="token-row">
+      <span class="token-name">--grid-cols</span>
+      <div class="token-val-group">
+        <span class="token-val">2fr desktop</span>
+        <span class="token-arrow">→</span>
+        <span class="token-mob">1fr mobile</span>
+      </div>
+    </div>
+    <div class="token-row">
+      <span class="token-name">--card-gap</span>
+      <div class="token-val-group">
+        <span class="token-val">16–32px desktop</span>
+        <span class="token-arrow">→</span>
+        <span class="token-mob">12px mobile</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ─── NAV DEMO ─── -->
+<div class="token-section">
+  <h3>Navigation — Hamburger Drawer</h3>
+</div>
+
+<div class="nav-demo-wrap">
+
+  <!-- Closed state -->
+  <div class="phone-col">
+    <div class="phone">
+      <!-- Nav bar -->
+      <div class="top-bar">
+        <span class="bar-logo">Dr. Alexander J. Blood</span>
+        <div class="ham-btn">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <!-- Cinematic hero behind nav -->
+      <div class="pg-content">
+        <div class="pg-content-overlay"></div>
+        <div class="pg-text-block">
+          <div class="pg-chip">Innovation in Care</div>
+          <div class="pg-headline">Cardiologist.<br>Intensivist.<br><em>AI Innovator.</em></div>
+          <div class="pg-tag">Transforming Cardiometabolic Care at the Bedside and Beyond.</div>
+          <div class="pg-btns">
+            <div class="pg-btn-p">View Publications</div>
+            <div class="pg-btn-g">Request Interview →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">Closed (default)</div>
+    <div class="phone-sub">Logo left, 44×44px hamburger right. Nav always visible.</div>
+  </div>
+
+  <!-- Open drawer state -->
+  <div class="phone-col">
+    <div class="phone">
+      <!-- Dimmed content behind -->
+      <div class="pg-content" style="filter: brightness(0.5);">
+        <div class="pg-content-overlay"></div>
+        <div class="pg-text-block">
+          <div class="pg-headline">Cardiologist.<br>Intensivist.<br><em>AI Innovator.</em></div>
+        </div>
+      </div>
+      <!-- Scrim -->
+      <div class="scrim"></div>
+      <!-- Drawer -->
+      <div class="drawer">
+        <div class="drawer-top">
+          <div class="close-btn">✕</div>
+        </div>
+        <div class="drawer-links">
+          <div class="d-link active">
+            <div class="d-dot"></div>Home
+          </div>
+          <div class="d-link">
+            <div class="d-dot"></div>About
+          </div>
+          <div class="d-link">
+            <div class="d-dot"></div>Expertise
+          </div>
+          <div class="d-link">
+            <div class="d-dot"></div>Publications
+          </div>
+          <div class="d-link">
+            <div class="d-dot"></div>Insights
+          </div>
+          <div class="d-link">
+            <div class="d-dot"></div>Podcast
+          </div>
+        </div>
+        <div class="drawer-cta-wrap">
+          <div class="drawer-cta">Contact Dr. Blood</div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">Open (drawer slides in)</div>
+    <div class="phone-sub">Dark navy drawer from right. Scrim + blur on background. Close button top-right.</div>
+  </div>
+
+</div>
+
+<!-- ─── SPECS ─── -->
+<div class="token-section">
+  <h3>UX Compliance (UI/UX Pro Max)</h3>
+</div>
+<div class="spec-grid">
+  <div class="spec-card">
+    <div class="spec-icon">👆</div>
+    <div class="spec-title">Touch Targets</div>
+    <div class="spec-val">44 × 44px</div>
+    <div class="spec-body">Hamburger button, drawer links, CTA — all meet Apple HIG minimum.</div>
+  </div>
+  <div class="spec-card">
+    <div class="spec-icon">⚡</div>
+    <div class="spec-title">Tap Delay</div>
+    <div class="spec-val">0ms</div>
+    <div class="spec-body">touch-action: manipulation on all interactive elements eliminates 300ms delay.</div>
+  </div>
+  <div class="spec-card">
+    <div class="spec-icon">♿</div>
+    <div class="spec-title">Accessibility</div>
+    <div class="spec-val">WCAG AA</div>
+    <div class="spec-body">aria-expanded on hamburger, aria-label, focus trap in open drawer, Escape key closes.</div>
+  </div>
+  <div class="spec-card">
+    <div class="spec-icon">🎨</div>
+    <div class="spec-title">Contrast</div>
+    <div class="spec-val">4.5 : 1</div>
+    <div class="spec-body">All text passes. Drawer links use rgba(255,248,240,0.55) → bumped to 0.7 for mobile.</div>
+  </div>
+  <div class="spec-card">
+    <div class="spec-icon">🎭</div>
+    <div class="spec-title">Animation</div>
+    <div class="spec-val">250ms</div>
+    <div class="spec-body">Drawer slides in with ease-out. Scrim fades in parallel. Respects prefers-reduced-motion.</div>
+  </div>
+  <div class="spec-card">
+    <div class="spec-icon">📏</div>
+    <div class="spec-title">Drawer Width</div>
+    <div class="spec-val">80vw max</div>
+    <div class="spec-body">Never full-screen. Leaves 20% visible so user sees they're still on the same page.</div>
+  </div>
+</div>
+
+<p class="approve-hint">Does this system + nav design look right? Reply in the terminal.</p>
+
+</body>
+</html>

@@ -15,7 +15,7 @@
           @if (link.route) {
             <a [routerLink]="link.route" class="col-link">{{ link.label }}</a>
           } @else {
-            <a [href]="link.href ?? '#'" class="col-link" rel="noopener">{{ link.label }}</a>
+            <a [href]="link.href ?? '#'" class="col-link" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>
           }
         }
       </div>
