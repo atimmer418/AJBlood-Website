@@ -367,6 +367,21 @@
     margin-bottom: 36px;
   }
 
+  .timeline { padding-left: 12px; }
+
+  .timeline-item { padding-left: 8px; }
+
+  .timeline-dot {
+    left: -16px;
+    width: 8px;
+    height: 8px;
+    box-shadow: 0 0 0 4px rgba(0, 15, 34, 0.08);
+
+    &.active {
+      box-shadow: 0 0 0 4px rgba(0, 106, 97, 0.15);
+    }
+  }
+
   .about-actions {
     flex-wrap: wrap;
     gap: 12px;
