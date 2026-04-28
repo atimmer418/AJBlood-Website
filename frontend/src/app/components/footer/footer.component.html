@@ -9,7 +9,7 @@
     </div>
 
     @for (col of cols; track col.head) {
-      <div class="footer-col">
+      <div class="footer-col" [class.hide-mobile]="col.head === 'Navigation'">
         <div class="col-head">{{ col.head }}</div>
         @for (link of col.links; track link.label) {
           @if (link.route) {
