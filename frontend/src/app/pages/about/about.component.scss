@@ -321,6 +321,17 @@
     aspect-ratio: 4/3;
   }
 
+  /* Reorder hero children on mobile via display: contents */
+  .about-hero-left,
+  .about-hero-right { display: contents; }
+
+  .about-hero .chip             { order: 1; }
+  .about-hero .about-headline   { order: 2; }
+  .about-hero .about-photo-wrap { order: 3; }
+  .about-hero .about-roles-card { order: 4; }
+  .about-hero .about-tagline    { order: 5; }
+  .about-hero .about-actions    { order: 6; }
+
   /* Roles card: remove absolute positioning, flow below photo */
   .about-roles-card {
     position: static;

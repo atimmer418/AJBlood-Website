@@ -629,6 +629,16 @@
     gap: 24px;
   }
 
+  /* Reorder hero children on mobile via display: contents */
+  .hero-text,
+  .hero-image-wrap { display: contents; }
+
+  .hero-inner .live-chip    { order: 1; }
+  .hero-inner .hero-title   { order: 2; }
+  .hero-inner .image-card   { order: 3; }
+  .hero-inner .hero-desc    { order: 4; }
+  .hero-inner .hero-actions { order: 5; }
+
   .hero-title {
     font-size: clamp(2rem, 8vw, 3rem);
   }
