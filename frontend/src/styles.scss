@@ -203,6 +203,10 @@ img {
   --card-gap:   16px;
 }
 
+.show-mobile {
+  display: none !important;
+}
+
 @media (max-width: 768px) {
   :root {
     --page-px:    24px;
@@ -216,6 +220,10 @@ img {
     display: none !important;
   }
 
+  .show-mobile {
+    display: inline !important;
+  }
+
   html,
   body {
     overflow-x: hidden;
@@ -226,6 +234,6 @@ img {
   :root {
     --page-px:    16px;
     --section-py: 48px;
-    --hero-pt:    50px;
+    --hero-pt:    68px;
   }
 }

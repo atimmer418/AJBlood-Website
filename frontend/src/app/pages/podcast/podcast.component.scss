@@ -626,17 +626,17 @@
 
   .hero-inner {
     grid-template-columns: 1fr;
-    gap: 24px;
+    row-gap: 0;
   }
 
   /* Reorder hero children on mobile via display: contents */
   .hero-text,
   .hero-image-wrap { display: contents; }
 
-  .hero-inner .live-chip    { order: 1; }
+  .hero-inner .live-chip    { order: 1; justify-self: start; }
   .hero-inner .hero-title   { order: 2; }
   .hero-inner .image-card   { order: 3; }
-  .hero-inner .hero-desc    { order: 4; }
+  .hero-inner .hero-desc    { order: 4; margin-top: 16px; }
   .hero-inner .hero-actions { order: 5; }
 
   .hero-title {
