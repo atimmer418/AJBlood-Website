@@ -8,6 +8,7 @@ interface Publication {
   authors: string;
   journal: string;
   doi: string;
+  url?: string;
 }
 
 @Component({
@@ -44,7 +45,7 @@ export class PublicationsComponent {
       title: 'Randomized Evaluation of a Remote Management Program to Improve Guideline-Directed Medical Therapy: The DRIVE Trial',
       authors: 'Blood AJ, Chang LS, Hassan S, et al.',
       journal: 'Circulation, Vol 149, Issue 23',
-      doi: 'DOI: 10.1161/CIRCULATIONAHA.124.069043',
+      doi: 'DOI: 10.1161/CIRCULATIONAHA.124.069494',
     },
     {
       tag: 'Cardiometabolic',
@@ -76,7 +77,7 @@ export class PublicationsComponent {
       title: 'Workflow Automation for a Virtual Hypertension Management Program',
       authors: 'Gordon WJ, Blood AJ, Chaney K, et al.',
       journal: 'Applied Clinical Informatics, Vol 12, Issue 5',
-      doi: 'DOI: 10.1055/s-0041-1739517',
+      doi: 'DOI: 10.1055/s-0041-1739195',
     },
     {
       tag: 'Cardiometabolic',
@@ -84,7 +85,7 @@ export class PublicationsComponent {
       title: 'Implementation of a Scalable Online Weight Management Programme in Clinical Settings: Protocol for the PROPS 2.0 Programme',
       authors: 'Cho J, Noonan SH, Fay R, et al.',
       journal: 'BMJ Open, Vol 13, Issue 12',
-      doi: 'DOI: 10.1136/bmjopen-2023-076872',
+      doi: 'DOI: 10.1136/bmjopen-2023-077520',
     },
     {
       tag: 'Remote Care',
@@ -92,7 +93,8 @@ export class PublicationsComponent {
       title: 'Disruptive and Sustaining Innovation in Telemedicine: A Strategic Roadmap',
       authors: 'Lee SG, Blood AJ, Gordon WJ, Scirica BM',
       journal: 'NEJM Catalyst Innovations in Care Delivery, Vol 2, Issue 6',
-      doi: 'DOI: 10.1056/CAT.21.0288',
+      doi: 'DOI: 10.1056/CAT.21.0311',
+      url: 'https://catalyst.nejm.org/doi/full/10.1056/CAT.21.0311',
     },
     {
       tag: 'Cardiometabolic',
@@ -100,7 +102,7 @@ export class PublicationsComponent {
       title: 'Long-Term Blood Pressure Trends Following a Remote Hypertension Intervention',
       authors: 'Hassan S, Blood AJ, Zelle D, et al.',
       journal: 'Hypertension, Vol 82, Issue 4',
-      doi: 'DOI: 10.1161/HYPERTENSIONAHA.124.23947',
+      doi: 'DOI: 10.1161/HYPERTENSIONAHA.124.24475',
     },
     {
       tag: 'Cardiometabolic',

@@ -13,4 +13,11 @@ export class PublicationCardComponent {
   @Input() authors = '';
   @Input() journal = '';
   @Input() doi = '';
+  @Input() url = '';
+
+  get articleUrl(): string {
+    if (this.url) return this.url;
+    const identifier = this.doi.replace(/^DOI:\s*/i, '');
+    return `https://doi.org/${identifier}`;
+  }
 }
