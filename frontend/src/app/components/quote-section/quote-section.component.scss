@@ -90,3 +90,20 @@
   color: rgba(255, 248, 240, 0.75);
   line-height: 1.7;
 }
+
+@media (max-width: 768px) {
+  .quote-section {
+    padding: var(--section-py) var(--page-px);
+  }
+
+  .quote-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .quote-right { order: 1; }
+  .quote-card  { order: 2; }
+
+  .right-headline { font-size: 26px; }
+  .quote-text     { font-size: 17px; }
+}
