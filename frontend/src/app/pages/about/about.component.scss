@@ -366,4 +366,14 @@
     font-size: 26px;
     margin-bottom: 36px;
   }
+
+  .about-actions {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .btn-dark,
+  .btn-ghost {
+    touch-action: manipulation;
+  }
 }

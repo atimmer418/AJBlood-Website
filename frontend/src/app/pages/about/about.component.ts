@@ -13,7 +13,9 @@ export class AboutComponent {
   scrollToNarrative(): void {
     const el = document.getElementById('professional-narrative');
     if (!el) return;
-    const top = el.getBoundingClientRect().top + window.scrollY - 64;
+    const nav = document.querySelector('nav');
+    const navHeight = nav?.getBoundingClientRect().height ?? 64;
+    const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
     window.scrollTo({ top, behavior: 'smooth' });
   }
 
