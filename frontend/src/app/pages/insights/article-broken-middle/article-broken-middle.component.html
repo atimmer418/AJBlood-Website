@@ -23,3 +23,82 @@
        class="article-img" />
   <p class="image-caption">Photo: National Cancer Institute / Unsplash</p>
 </div>
+
+<article class="article-body">
+  <p class="article-deck">
+    For decades, the industry has told itself the same story: the bottleneck isn't at the front of the funnel.
+    It's in the middle — at the moment when a coordinator sits down with a list of potential patients and tries
+    to figure out who is actually eligible. That step is broken. And it's been broken for structural reasons
+    that no amount of additional outreach will fix.
+  </p>
+
+  <h2 class="section-header">The First Structural Failure: The Data Architecture of Clinical Eligibility</h2>
+  <p>
+    Roughly 80% of the data relevant to eligibility assessment lives in unstructured clinical text — physician
+    notes, discharge summaries, imaging reports, pathology records. Standard screening tools read structured
+    data: diagnosis codes, lab values, medication lists. That layer is important, but it captures only a
+    fraction of the clinical picture.
+  </p>
+  <p>
+    When a coordinator reviews a potential patient, they are essentially performing manual information retrieval
+    across a fragmented record — pulling a note from 18 months ago, cross-referencing it against an imaging
+    report, reconciling it with a contraindication buried in a discharge summary. This is not a workflow
+    problem. It is a data architecture problem. The tools most sites use were not built to operate on the full
+    depth of a patient's clinical history. They were built to query structured fields that happen to be
+    machine-readable.
+  </p>
+
+  <h2 class="section-header">The Second Structural Failure: Manual Review Doesn't Scale to the Complexity We're Asking of It</h2>
+  <p>
+    A trained coordinator reviewing eligibility for a Phase III oncology trial might be managing three or four
+    active studies simultaneously. For each patient, they are assessing up to 60 inclusion and exclusion
+    criteria — many of which require clinical judgment, not just data lookup.
+  </p>
+  <p>
+    The error rate on manual eligibility review is not marginal. Studies have consistently shown that trained
+    staff misclassify patients at rates high enough to affect enrollment yield. The problem isn't that
+    coordinators aren't skilled. It's that the volume and complexity of the task has exceeded what manual
+    processes can reliably handle — particularly as protocol complexity has increased dramatically year over year.
+  </p>
+  <p>
+    The result is a structural tension: the people best equipped to make these determinations accurately are
+    the same people being asked to make them at a pace and volume that makes accuracy impossible to sustain.
+  </p>
+
+  <h2 class="section-header">The Third Structural Failure: The Criteria Problem No One Talks About</h2>
+  <p>
+    Inclusion and exclusion criteria for a clinical trial are written 12 to 18 months before the trial opens
+    to enrollment. By the time coordinators are actively screening patients, the protocol reflects what a
+    medical writer and clinical team thought the standard of care, lab normal ranges, and comorbidity landscape
+    looked like well over a year ago.
+  </p>
+  <p>
+    Clinical practice doesn't wait for your protocol to catch up. What constitutes "standard of care" in a
+    particular indication shifts. Diagnostic thresholds get revised. Guidelines are updated. Comorbidity
+    patterns evolve. New therapies enter the market. And yet the eligibility criteria remain static — a
+    snapshot of clinical reality from before the trial began. Coordinators are screening in real time against
+    criteria written in the past.
+  </p>
+  <p>
+    This isn't a minor technical issue. It contributes materially to screen failure rates in indications where
+    treatment patterns evolve quickly — which increasingly describes most of cardiometabolic, oncology,
+    immunology, and CNS.
+  </p>
+
+  <h2 class="section-header">The Reframe</h2>
+  <p>
+    None of these three failures will be solved by hiring more patient recruitment coordinators or running
+    better patient-facing campaigns. They are upstream, structural, and engrained in the people and processes
+    that are difficult to change. The industry conflates "we need more patients" with "we need to find more
+    patients" — but the actual failure is often happening after a patient has already been identified.
+  </p>
+  <p>
+    The patients are there. The problem is that the system we use to determine who among them is eligible was
+    not built to handle the data environments and protocol complexity of modern clinical trials.
+  </p>
+  <p>
+    What does it look like to treat this as an infrastructure problem rather than a headcount problem?
+  </p>
+
+  <p class="article-hashtags">#ClinicalTrials #PatientRecruitment #ClinicalOps</p>
+</article>
