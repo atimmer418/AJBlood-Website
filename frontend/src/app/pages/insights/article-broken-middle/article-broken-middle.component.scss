@@ -120,8 +120,7 @@
 
 /* ── Article body ── */
 .article-body {
-  max-width: 720px;
-  margin: 60px auto;
+  margin: 60px 260px;
   padding: 0 40px;
 }
 
@@ -131,8 +130,6 @@
   line-height: 1.75;
   color: #5c6370;
   margin-bottom: 0;
-  padding-bottom: 48px;
-  border-bottom: 1px solid rgba(0, 106, 97, 0.12);
 }
 
 .section-header {
