@@ -36,5 +36,12 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/contact/contact.component').then(m => m.ContactComponent),
     title: 'Contact — Dr. Alexander J. Blood'
   },
+  {
+    path: 'insights/the-broken-middle',
+    loadComponent: () =>
+      import('./pages/insights/article-broken-middle/article-broken-middle.component')
+        .then(m => m.ArticleBrokenMiddleComponent),
+    title: 'The Broken Middle — Dr. Alexander J. Blood'
+  },
   { path: '**', redirectTo: '' }
 ];
