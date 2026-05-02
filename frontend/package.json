@@ -9,7 +9,9 @@
     "test": "ng test",
     "optimize:images": "node scripts/optimize-images.mjs",
     "favicons": "node scripts/generate-favicons.mjs",
-    "og:image": "node scripts/generate-og-image.mjs"
+    "og:image": "node scripts/generate-og-image.mjs",
+    "deploy": "npm run build && wrangler deploy",
+    "preview": "npm run build && wrangler dev"
   },
   "private": true,
   "dependencies": {
@@ -38,6 +40,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "png-to-ico": "^3.0.1",
     "sharp": "^0.33.5",
-    "typescript": "~5.6.2"
+    "typescript": "~5.6.2",
+    "wrangler": "^4.87.0"
   }
 }
