@@ -1,5 +1,7 @@
-<div class="insight-card" [class.dark]="dark">
-  <span class="tag">{{ tag }}</span>
-  <h3 class="title">{{ title }}</h3>
-  <p class="date">{{ date }}</p>
-</div>
+<a [routerLink]="route" class="insight-card-link">
+  <div class="insight-card" [class.dark]="dark">
+    <span class="tag">{{ tag }}</span>
+    <h3 class="title">{{ title }}</h3>
+    <p class="date">{{ date }}</p>
+  </div>
+</a>

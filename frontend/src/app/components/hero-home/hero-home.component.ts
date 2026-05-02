@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './hero-home.component.scss'
 })
 export class HeroHomeComponent {
-  readonly roles = ['Harvard Medical School', "Brigham & Women's Hospital", 'AIwithCare Co-Founder and CEO'];
+  readonly roles = ['AIwithCare Co-Founder and CEO', "Brigham & Women's Hospital", 'Harvard Medical School'];
   readonly tags = [
     'Healthcare AI CEO',
     'Practicing Cardiac Intensivist',

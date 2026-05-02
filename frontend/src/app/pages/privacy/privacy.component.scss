@@ -1,0 +1,64 @@
+.privacy {
+  background: var(--bg);
+  padding: var(--hero-pt) var(--page-px) var(--section-py);
+}
+
+.privacy__header {
+  max-width: 720px;
+  margin: 0 auto 3.5rem;
+
+  h1 {
+    font-family: var(--font-serif);
+    font-size: var(--text-h1);
+    font-weight: 700;
+    color: var(--fg1);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    margin: 0.5rem 0 0.75rem;
+  }
+}
+
+.privacy__updated {
+  font-family: var(--font-sans);
+  font-size: var(--text-body-sm);
+  color: var(--fg2);
+}
+
+.privacy__body {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.privacy__section {
+  margin-bottom: 2.5rem;
+
+  h2 {
+    font-family: var(--font-serif);
+    font-size: var(--text-h3);
+    font-weight: 600;
+    color: var(--fg1);
+    line-height: var(--leading-snug);
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    font-family: var(--font-sans);
+    font-size: var(--text-body-lg);
+    color: var(--fg2);
+    line-height: var(--leading-loose);
+
+    & + p {
+      margin-top: 0.875rem;
+    }
+  }
+
+  a {
+    color: var(--fg-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+}

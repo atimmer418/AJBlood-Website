@@ -11,15 +11,11 @@ import { QuoteSectionComponent } from '../../components/quote-section/quote-sect
 })
 export class AboutComponent {
   scrollToNarrative(): void {
-    const el = document.getElementById('professional-narrative');
-    if (!el) return;
-    const nav = document.querySelector('nav');
-    const navHeight = nav?.getBoundingClientRect().height ?? 64;
-    const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
-    window.scrollTo({ top, behavior: 'smooth' });
+    document.getElementById('professional-narrative')
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  readonly roles = ['Harvard Medical School', "Brigham & Women's Hospital", 'AIwithCare Co-Founder and CEO'];
+  readonly roles = ['AIwithCare Co-Founder and CEO', "Brigham & Women's Hospital", 'Harvard Medical School'];
 
   readonly affiliations = [
     { logo: 'assets/logos/hms.svg',        alt: 'Harvard Medical School',       label: 'Harvard Medical School',                                              size: 'logo-hms',  href: 'https://hms.harvard.edu/' },

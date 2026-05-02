@@ -10,7 +10,6 @@ export class StatsBarComponent {
   readonly stats = [
     { num: '25+', label: 'Peer-Reviewed Papers' },
     { num: '880+', label: 'Citations Globally' },
-    { num: '10',  label: 'Active AI Trials' },
     { num: '12yrs', label: 'Clinical Experience' },
   ];
 }

@@ -7,17 +7,18 @@
     <div class="insights-header">
       <h2 class="insights-title">Latest Insights</h2>
       <a routerLink="/insights" class="insights-more">
-        View Archive
+        View All Insights
         <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
       </a>
     </div>
     <div class="insights-grid">
-      @for (card of insights; track card.title) {
+      @for (card of latest; track card.slug) {
         <app-insight-card
           [tag]="card.tag"
           [title]="card.title"
-          [date]="card.date"
-          [dark]="card.dark"
+          [date]="card.displayDate"
+          [route]="card.route"
+          [dark]="$index % 2 === 1"
         />
       }
     </div>

@@ -40,7 +40,7 @@ export class FooterComponent {
       links: [
         { label: 'LinkedIn',       href: 'https://www.linkedin.com/in/alexander-blood-md-msc-facc-abom-a8654a23' },
         { label: 'X (Twitter)',    href: 'https://x.com/ajbloodmd' },
-        { label: 'Privacy Policy', href: '#' }
+        { label: 'Privacy Policy', route: '/privacy' }
       ]
     }
   ];

@@ -26,6 +26,10 @@
   }
 }
 
+.about-photo-col {
+  position: relative;
+}
+
 .about-headline {
   font-family: 'Noto Serif', serif;
   font-size: 60px;
@@ -86,10 +90,6 @@
   transition: color 300ms;
   .material-symbols-outlined { font-size: 18px; }
   &:hover { color: #006a61; }
-}
-
-.about-hero-right {
-  position: relative;
 }
 
 .about-photo-wrap {
@@ -214,6 +214,7 @@
 .timeline-section {
   background: #fff8f0;
   padding: 72px 40px;
+  scroll-margin-top: var(--nav-height, 64px);
 }
 
 .timeline-inner {
@@ -304,7 +305,7 @@
   .about-hero {
     grid-template-columns: 1fr;
     padding: var(--hero-pt) var(--page-px) 40px;
-    row-gap: 0;
+    gap: 24px;
   }
 
   .about-headline {
@@ -321,18 +322,7 @@
     aspect-ratio: 4/3;
   }
 
-  /* Reorder hero children on mobile via display: contents */
-  .about-hero-left,
-  .about-hero-right { display: contents; }
-
-  .about-hero .chip             { order: 1; justify-self: start; }
-  .about-hero .about-headline   { order: 2; }
-  .about-hero .about-photo-wrap { order: 3; }
-  .about-hero .about-roles-card { order: 4; }
-  .about-hero .about-tagline    { order: 5; margin-top: 16px; }
-  .about-hero .about-actions    { order: 6; }
-
-  /* Roles card: remove absolute positioning, flow below photo */
+  /* Roles card: flow below photo inside photo-col */
   .about-roles-card {
     position: static;
     width: 100%;

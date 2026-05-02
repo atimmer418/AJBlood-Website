@@ -6,6 +6,7 @@ import { JournalLogosComponent } from '../../components/journal-logos/journal-lo
 import { StatsBarComponent } from '../../components/stats-bar/stats-bar.component';
 import { InsightCardComponent } from '../../components/insight-card/insight-card.component';
 import { CtaSectionComponent } from '../../components/cta-section/cta-section.component';
+import { articlesByRecency } from '../../data/articles';
 
 @Component({
   selector: 'app-home',
@@ -25,9 +26,5 @@ export class HomeComponent implements OnInit {
     ]);
   }
 
-  readonly insights = [
-    { tag: 'Ethics',         title: 'Bridging the Gap: Neural Networks in Clinical Decision Support',  date: 'March 10, 2024', dark: false },
-    { tag: 'Clinical Crit',  title: 'The Future of Remote Monitoring in Acute Heart Failure',           date: 'Feb 28, 2024',   dark: true  },
-    { tag: 'Research',       title: 'Algorithmic Transparency at the Bedside',                         date: 'July 9, 2024',   dark: false },
-  ];
+  readonly latest = articlesByRecency().slice(0, 3);
 }

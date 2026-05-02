@@ -218,3 +218,39 @@ a.read-btn {
   display: inline-flex;
   text-decoration: none;
 }
+
+/* ── More Insights ── */
+.more-insights-section {
+  background: #fff8f0;
+  padding: 60px 40px;
+  border-top: 1px solid rgba(0, 15, 34, 0.06);
+}
+
+.more-insights-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.more-insights-title {
+  font-family: 'Noto Serif', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #000f22;
+  margin-bottom: 28px;
+}
+
+.insights-grid {
+  display: flex;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .more-insights-section {
+    padding: var(--section-py) var(--page-px);
+  }
+
+  .insights-grid {
+    flex-direction: column;
+    gap: var(--card-gap);
+  }
+}

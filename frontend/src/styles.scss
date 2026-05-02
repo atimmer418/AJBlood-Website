@@ -133,6 +133,13 @@ img {
   line-height: 1;
   vertical-align: middle;
   user-select: none;
+  width: 1em;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.fonts-loaded .material-symbols-outlined {
+  visibility: visible;
 }
 
 /* ─── SCROLLBAR ──────────────────────────────────────────────────────────── */

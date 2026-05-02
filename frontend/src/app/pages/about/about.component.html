@@ -3,27 +3,30 @@
     <div class="chip">
       <span class="chip-text">Clinical Innovator &amp; Researcher</span>
     </div>
+
     <h1 class="about-headline">
       At the Intersection of <span class="italic-teal">Medicine</span> &amp;
       <span class="teal">Machine Intelligence</span>.
     </h1>
+
     <p class="about-tagline">
       Dr. Alexander J. Blood is a cardiologist and clinical investigator dedicated
       to reimagining healthcare through the lens of artificial intelligence.
     </p>
+
     <div class="about-actions">
       <a href="assets/Dr_AJ_Blood_CV.pdf" download="Dr. AJ Blood CV.pdf" class="btn-dark">
         <span class="material-symbols-outlined" aria-hidden="true">download</span>
-        Download <span class="hide-mobile">Full </span>CV
+        Download CV
       </a>
-      <a href="#professional-narrative" (click)="$event.preventDefault(); scrollToNarrative()" class="btn-ghost">
-        Explore Career <span class="hide-mobile">Journey</span><span class="show-mobile">Path</span>
+      <button type="button" (click)="scrollToNarrative()" class="btn-ghost">
+        Explore Career Path
         <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-      </a>
+      </button>
     </div>
   </div>
 
-  <div class="about-hero-right">
+  <div class="about-photo-col">
     <div class="about-photo-wrap">
       <img ngSrc="lobby" width="1600" height="2436" priority
            alt="Dr. Alexander J. Blood at Brigham & Women's Hospital" class="about-photo" />

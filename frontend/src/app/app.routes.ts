@@ -4,44 +4,49 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
-    title: 'Dr. Alexander J. Blood'
+    title: 'Dr. AJ Blood'
   },
   {
     path: 'about',
     loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent),
-    title: 'About — Dr. Alexander J. Blood'
+    title: 'About — Dr. AJ Blood'
   },
   {
     path: 'expertise',
     loadComponent: () => import('./pages/expertise/expertise.component').then(m => m.ExpertiseComponent),
-    title: 'Expertise — Dr. Alexander J. Blood'
+    title: 'Expertise — Dr. AJ Blood'
   },
   {
     path: 'publications',
     loadComponent: () => import('./pages/publications/publications.component').then(m => m.PublicationsComponent),
-    title: 'Publications — Dr. Alexander J. Blood'
+    title: 'Publications — Dr. AJ Blood'
   },
   {
     path: 'insights',
     loadComponent: () => import('./pages/insights/insights.component').then(m => m.InsightsComponent),
-    title: 'Insights & Media — Dr. Alexander J. Blood'
+    title: 'Insights & Media — Dr. AJ Blood'
   },
   {
     path: 'podcast',
     loadComponent: () => import('./pages/podcast/podcast.component').then(m => m.PodcastComponent),
-    title: 'Podcast — Dr. Alexander J. Blood'
+    title: 'Podcast — Dr. AJ Blood'
   },
   {
     path: 'contact',
     loadComponent: () => import('./pages/contact/contact.component').then(m => m.ContactComponent),
-    title: 'Contact — Dr. Alexander J. Blood'
+    title: 'Contact — Dr. AJ Blood'
   },
   {
     path: 'insights/the-broken-middle',
     loadComponent: () =>
       import('./pages/insights/article-broken-middle/article-broken-middle.component')
         .then(m => m.ArticleBrokenMiddleComponent),
-    title: 'The Broken Middle — Dr. Alexander J. Blood'
+    title: 'The Broken Middle — Dr. AJ Blood'
+  },
+  {
+    path: 'privacy',
+    loadComponent: () => import('./pages/privacy/privacy.component').then(m => m.PrivacyComponent),
+    title: 'Privacy Policy — Dr. AJ Blood'
   },
   { path: '**', redirectTo: '' }
 ];

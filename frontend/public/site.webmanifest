@@ -1,0 +1,11 @@
+{
+  "name": "Dr. Alexander J. Blood",
+  "short_name": "AJ Blood",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#000f22",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
