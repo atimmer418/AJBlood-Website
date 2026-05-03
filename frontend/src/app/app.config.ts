@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { PreloadAllModules, provideRouter, withInMemoryScrolling, withPreloading } from '@angular/router';
+import { PreloadAllModules, provideRouter, withPreloading } from '@angular/router';
 import { IMAGE_CONFIG, IMAGE_LOADER, ImageLoaderConfig } from '@angular/common';
 
 import { routes } from './app.routes';
@@ -11,8 +11,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(
       routes,
-      withPreloading(PreloadAllModules),
-      withInMemoryScrolling({ scrollPositionRestoration: 'top' })
+      withPreloading(PreloadAllModules)
     ),
     {
       provide: IMAGE_LOADER,

@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ajblood-website",
+  "compatibility_date": "2025-11-01",
+  "assets": {
+    "directory": "./dist/ajblood-website/browser",
+    "not_found_handling": "single-page-application"
+  }
+}
