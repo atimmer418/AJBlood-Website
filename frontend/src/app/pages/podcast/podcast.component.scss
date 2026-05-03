@@ -604,6 +604,7 @@
 }
 
 .cta-btn {
+  display: inline-block;
   padding: 16px 36px;
   background: #006a61;
   color: #fff;
@@ -613,6 +614,7 @@
   font-weight: 700;
   border: none;
   cursor: pointer;
+  text-decoration: none;
   box-shadow: 0 12px 32px rgba(0, 106, 97, 0.3);
   transition: transform 300ms;
 
