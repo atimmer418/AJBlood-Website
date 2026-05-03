@@ -16,11 +16,15 @@ export class AppComponent {
   private readonly router = inject(Router);
 
   constructor() {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
     this.router.events
       .pipe(
         filter((e): e is NavigationEnd => e instanceof NavigationEnd),
         takeUntilDestroyed()
       )
-      .subscribe(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }));
+      .subscribe(() => window.scrollTo(0, 0));
   }
 }
