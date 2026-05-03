@@ -25,6 +25,15 @@ export class AppComponent {
         filter((e): e is NavigationEnd => e instanceof NavigationEnd),
         takeUntilDestroyed()
       )
-      .subscribe(() => window.scrollTo(0, 0));
+      .subscribe(() => {
+        // RAF escapes iOS Safari's post-touch scroll lock; assigning all three
+        // covers mobile widths where `overflow-x: hidden` on html/body makes
+        // documentElement (not window) the effective scroll container.
+        requestAnimationFrame(() => {
+          window.scrollTo(0, 0);
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        });
+      });
   }
 }
