@@ -129,6 +129,19 @@
   &:hover { transform: scale(1.04); }
 }
 
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  &:hover { transform: none; }
+}
+
+.form-error {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #b91c1c;
+  margin-top: 4px;
+}
+
 @media (max-width: 768px) {
   .contact-inner {
     padding: 40px var(--page-px);

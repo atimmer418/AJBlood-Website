@@ -43,3 +43,6 @@ Thumbs.db
 
 # Original (pre-optimization) source images — run npm run optimize:images to regenerate optimized/
 /public/assets/_originals
+
+# Cloudflare Workers local secrets
+.dev.vars

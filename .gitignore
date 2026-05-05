@@ -16,6 +16,7 @@ frontend/ajblood-website/coverage/
 .env
 .env.*
 !.env.example
+.dev.vars
 
 # IDEs
 .idea/

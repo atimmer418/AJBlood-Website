@@ -1,9 +1,15 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "ajblood-website",
+  "main": "worker/index.ts",
   "compatibility_date": "2025-11-01",
   "assets": {
     "directory": "./dist/ajblood-website/browser",
-    "not_found_handling": "single-page-application"
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": true
+  },
+  "vars": {
+    "RECIPIENT_EMAIL": "ajbloodmd@gmail.com"
   }
 }

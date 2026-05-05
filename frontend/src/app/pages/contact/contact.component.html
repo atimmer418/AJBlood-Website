@@ -11,27 +11,32 @@
       <div class="success-panel">
         <span class="material-symbols-outlined success-icon" aria-hidden="true">check_circle</span>
         <p class="success-heading">Message Received</p>
-        <p class="success-sub">Dr. Blood's team will be in touch within 2 business days.</p>
+        <p class="success-sub">Dr. Blood's team will be in touch shortly.</p>
       </div>
     } @else {
       <form class="contact-form" (submit)="submit($event)" novalidate>
         <div class="field">
           <label for="fullName" class="field-label">Full Name</label>
-          <input id="fullName" type="text" class="field-input" />
+          <input id="fullName" name="fullName" type="text" class="field-input" />
         </div>
         <div class="field">
           <label for="email" class="field-label">Email Address</label>
-          <input id="email" type="email" class="field-input" />
+          <input id="email" name="email" type="email" class="field-input" />
         </div>
         <div class="field">
           <label for="org" class="field-label">Organization / Institution</label>
-          <input id="org" type="text" class="field-input" />
+          <input id="org" name="org" type="text" class="field-input" />
         </div>
         <div class="field">
           <label for="message" class="field-label">Message</label>
-          <textarea id="message" rows="5" class="field-textarea"></textarea>
+          <textarea id="message" name="message" rows="5" class="field-textarea"></textarea>
         </div>
-        <button type="submit" class="submit-btn">Send Message</button>
+        <button type="submit" class="submit-btn" [disabled]="submitting()">
+          {{ submitting() ? 'Sending…' : 'Send Message' }}
+        </button>
+        @if (error()) {
+          <p class="form-error">{{ error() }}</p>
+        }
       </form>
     }
   </div>
