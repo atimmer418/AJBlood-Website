@@ -54,6 +54,37 @@ nav {
   }
 }
 
+.nav-link--disabled {
+  cursor: default;
+  color: rgba(0, 15, 34, 0.35);
+
+  .coming-soon-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(0, 15, 34, 0.4);
+    background: rgba(0, 15, 34, 0.07);
+    border-radius: 4px;
+    padding: 1px 5px;
+    vertical-align: middle;
+    margin-left: 3px;
+  }
+}
+
+.drawer-link--disabled {
+  cursor: default;
+  opacity: 0.4;
+  pointer-events: none;
+
+  .coming-soon-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+}
+
 .nav-actions {
   display: flex;
   gap: 12px;

@@ -33,7 +33,7 @@ export class NavComponent {
     { label: 'Expertise',        path: '/expertise' },
     { label: 'Publications',     path: '/publications' },
     { label: 'Insights & Media', path: '/insights' },
-    { label: 'Podcast',          path: '/podcast' },
+    { label: 'Podcast',          path: '/podcast', comingSoon: true },
   ];
 
   toggleMenu(): void {

@@ -12,7 +12,9 @@
       <div class="footer-col" [class.hide-mobile]="col.head === 'Navigation'">
         <div class="col-head">{{ col.head }}</div>
         @for (link of col.links; track link.label) {
-          @if (link.route) {
+          @if (link.comingSoon) {
+            <span class="col-link col-link--disabled">{{ link.label }} <span class="coming-soon-badge">Coming Soon</span></span>
+          } @else if (link.route) {
             <a [routerLink]="link.route" class="col-link">{{ link.label }}</a>
           } @else {
             <a [href]="link.href ?? '#'" class="col-link" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>

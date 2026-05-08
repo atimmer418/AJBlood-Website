@@ -3,12 +3,16 @@
 
   <div class="nav-links">
     @for (link of navLinks; track link.path) {
-      <a
-        [routerLink]="link.path"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: link.path === '/' }"
-        class="nav-link"
-      >{{ link.label }}</a>
+      @if (link.comingSoon) {
+        <span class="nav-link nav-link--disabled">{{ link.label }} <span class="coming-soon-badge">Coming Soon</span></span>
+      } @else {
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+          class="nav-link"
+        >{{ link.label }}</a>
+      }
     }
   </div>
 
@@ -46,16 +50,23 @@
 
     <div class="drawer-links">
       @for (link of navLinks; track link.path) {
-        <a
-          [routerLink]="link.path"
-          routerLinkActive="drawer-link-active"
-          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
-          class="drawer-link"
-          (click)="closeMenu()"
-        >
-          <span class="drawer-dot" aria-hidden="true"></span>
-          {{ link.label }}
-        </a>
+        @if (link.comingSoon) {
+          <span class="drawer-link drawer-link--disabled">
+            <span class="drawer-dot" aria-hidden="true"></span>
+            {{ link.label }} <span class="coming-soon-badge">Coming Soon</span>
+          </span>
+        } @else {
+          <a
+            [routerLink]="link.path"
+            routerLinkActive="drawer-link-active"
+            [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+            class="drawer-link"
+            (click)="closeMenu()"
+          >
+            <span class="drawer-dot" aria-hidden="true"></span>
+            {{ link.label }}
+          </a>
+        }
       }
     </div>
 

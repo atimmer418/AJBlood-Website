@@ -59,6 +59,25 @@ footer {
   }
 }
 
+.col-link--disabled {
+  cursor: default;
+  pointer-events: none;
+  color: rgba(255, 248, 240, 0.3);
+
+  .coming-soon-badge {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255, 248, 240, 0.35);
+    background: rgba(255, 248, 240, 0.08);
+    border-radius: 3px;
+    padding: 1px 4px;
+    vertical-align: middle;
+    margin-left: 3px;
+  }
+}
+
 .footer-bottom {
   max-width: 1200px;
   margin: 24px auto 0;

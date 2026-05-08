@@ -5,6 +5,7 @@ interface FooterLink {
   label: string;
   route?: string;
   href?: string;
+  comingSoon?: boolean;
 }
 
 @Component({
@@ -32,7 +33,7 @@ export class FooterComponent {
         { label: 'Expertise',    route: '/expertise' },
         { label: 'Publications',    route: '/publications' },
         { label: 'Insights & Media', route: '/insights' },
-        { label: 'Podcast',         route: '/podcast' }
+        { label: 'Podcast',         comingSoon: true }
       ]
     },
     {
